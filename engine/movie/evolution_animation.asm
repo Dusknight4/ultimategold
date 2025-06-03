@@ -29,7 +29,7 @@ EvolutionAnimation:
 	xor a
 	ldh [hBGMapMode], a
 
-	ld a, [wEvolutionOldSpecies]
+	ld a, [wTempMonDVs + 1]
 	ld [wPlayerHPPal], a
 
 	ld c, FALSE
@@ -85,7 +85,7 @@ EvolutionAnimation:
 	ld [wEvolutionPicOffset], a
 	call .ReplaceFrontpic
 
-	ld a, [wEvolutionNewSpecies]
+	ld a, [wTempMonDVs + 1]
 .return
 	ld [wPlayerHPPal], a
 

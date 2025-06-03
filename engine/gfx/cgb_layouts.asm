@@ -244,7 +244,7 @@ _CGB_Pokedex_Init:
 	ld a, PREDEFPAL_POKEDEX
 	call GetPredefPal
 	call LoadHLPaletteIntoDE ; dex interface palette
-	ld a, [wTempMonDVs + 1]
+	ld a, [wCurPartySpecies]
 	cp $ff
 	jr nz, .is_pokemon
 	ld hl, PokedexQuestionMarkPalette
@@ -252,7 +252,6 @@ _CGB_Pokedex_Init:
 	jr .got_palette
 
 .is_pokemon
-	ld a, [wTempMonDVs + 1]  ; load Speed/Special DV
 	call GetMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black ; mon palette
 .got_palette
@@ -290,7 +289,6 @@ _CGB_BillsPC:
 	jr .GotPalette
 
 .GetMonPalette:
-	ld a, [wTempMonDVs + 1]
 	ld bc, wTempMonDVs
 	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
@@ -337,7 +335,7 @@ _CGB_PokedexUnownMode:
 	ld a, PREDEFPAL_POKEDEX
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
-	ld a, [wTempMonDVs + 1]
+	ld a, [wCurPartySpecies]
 	call GetMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	call WipeAttrmap
@@ -816,7 +814,7 @@ _CGB_GamefreakLogo:
 
 _CGB_PlayerOrMonFrontpicPals:
 	ld de, wBGPals1
-	ld a, [wTempMonDVs + 1]
+	ld a, [wCurPartySpecies]
 	ld bc, wTempMonDVs
 	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
