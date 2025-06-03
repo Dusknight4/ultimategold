@@ -598,21 +598,32 @@ InitPartyMenuOBPals:
 	ret
 
 GetBattlemonBackpicPalettePointer:
-	push de
-	farcall GetPartyMonDVs
-	ld c, l
-	ld b, h
 	ld a, [wTempBattleMonSpecies]
+	and a
+	jr z, .useDefaultPalette
+
+	ld a, [wCurPartyMon]         ; party index
+	ld hl, wPartyMon1DVs + 1      ; Speed/Special DV of first party mon
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes                ; HL = pointer to desired Speed/Special DV
+	ld a, [hl]                    ; A = DV byte
+
+	jr .gotDV
+
+.useDefaultPalette:
+	xor a                         ; A = 0
+
+.gotDV:
 	call GetPlayerOrMonPalettePointer
-	pop de
 	ret
+
 
 GetEnemyFrontpicPalettePointer:
 	push de
 	farcall GetEnemyMonDVs
 	ld c, l
 	ld b, h
-	ld a, [wTempEnemyMonSpecies]
+	ld a, [$D0F5]
 	call GetFrontpicPalettePointer
 	pop de
 	ret
