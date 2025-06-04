@@ -543,12 +543,11 @@ StatsScreen_PlacePageSwitchArrows:
 	ret
 
 StatsScreen_PlaceShinyIcon:
-	ld bc, wTempMonDVs
-	callfar CheckShininess
-	ret nc
+	; Skip the CheckShininess logic entirely
 	hlcoord 19, 0
 	ld [hl], "⁂"
 	ret
+
 
 LoadGreenPage:
 	push bc

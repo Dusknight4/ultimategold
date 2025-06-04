@@ -3672,16 +3672,12 @@ InitBattleMon:
 	ret
 
 BattleCheckPlayerShininess:
-	call GetPartyMonDVs
-	jr BattleCheckShininess
+	ret
 
 BattleCheckEnemyShininess:
-	call GetEnemyMonDVs
+	ret
 
 BattleCheckShininess:
-	ld b, h
-	ld c, l
-	callfar CheckShininess
 	ret
 
 GetPartyMonDVs:

@@ -1,47 +1,26 @@
 INCLUDE "engine/gfx/sgb_layouts.asm"
 
-DEF SHINY_ATK_MASK EQU %0010
-DEF SHINY_DEF_DV EQU 10
-DEF SHINY_SPD_DV EQU 10
-DEF SHINY_SPC_DV EQU 10
-
 CheckShininess:
 ; Check if a mon is shiny by DVs at bc.
+; 50% chance: shiny if Defense DV (lower nibble) >= 8
 ; Return carry if shiny.
 
 	ld l, c
 	ld h, b
 
-; Attack
-	ld a, [hl]
-	and SHINY_ATK_MASK << 4
-	jr z, .not_shiny
+	inc hl              ; hl now points to Defense/Speed DV
+	ld a, [hl]          ; A = Def/Spd byte
+	and $0F             ; Isolate Defense DV (lower nibble)
+	cp 8
+	jr c, .not_shiny    ; If Defense DV < 8, not shiny
 
-; Defense
-	ld a, [hli]
-	and %1111
-	cp SHINY_DEF_DV
-	jr nz, .not_shiny
-
-; Speed
-	ld a, [hl]
-	and %1111 << 4
-	cp SHINY_SPD_DV << 4
-	jr nz, .not_shiny
-
-; Special
-	ld a, [hl]
-	and %1111
-	cp SHINY_SPC_DV
-	jr nz, .not_shiny
-
-; shiny
-	scf
+	scf                 ; Set carry: shiny
 	ret
 
 .not_shiny
-	and a
+	and a               ; Clear carry
 	ret
+
 
 Unused_CheckShininess:
 ; Return carry if the DVs at hl are all 10 or higher.
