@@ -5812,13 +5812,11 @@ LoadEnemyMon:
 .InitDVs:
 ; Trainer DVs
 
-; All trainers have preset DVs, determined by class
-; See GetTrainerDVs for more on that
-	farcall GetTrainerDVs
-; These are the DVs we'll use if we're actually in a trainer battle
+; Make trainer DVs random like wild Pokémon
 	ld a, [wBattleMode]
 	dec a
-	jr nz, .UpdateDVs
+	jr nz, .GenerateDVs  ; was .UpdateDVs before — now skip to random generation
+
 
 ; Wild DVs
 ; Here's where the fun starts
@@ -6272,7 +6270,7 @@ SwapBattlerLevels: ; unreferenced
 
 BattleWinSlideInEnemyTrainerFrontpic:
 	xor a
-	ld [wTempEnemyMonSpecies], a
+	ld [wEnemyMonDVs + 1], a
 	call FinishBattleAnim
 	ld a, [wOtherTrainerClass]
 	ld [wTrainerClass], a

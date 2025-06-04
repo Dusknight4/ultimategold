@@ -612,7 +612,7 @@ GetEnemyFrontpicPalettePointer:
 	farcall GetEnemyMonDVs
 	ld c, l
 	ld b, h
-	ld a, [$D0F5]
+	ld a, [wEnemyMonDVs + 1]
 	call GetFrontpicPalettePointer
 	pop de
 	ret
