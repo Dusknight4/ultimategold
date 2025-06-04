@@ -1,6 +1,6 @@
 	db POLITOED ; 186
 
-	db  90,  75,  75,  70,  90, 100
+	db  99,  75,  75,  70,  99, 109
 	;   hp  atk  def  spd  sat  sdf
 
 	db WATER, WATER ; type

@@ -6,4 +6,7 @@ CriticalHitMoves:
 	db SLASH
 	db AEROBLAST
 	db CROSS_CHOP
+	db EXTREMESPEED
+	db TWINEEDLE
+	db MEGAHORN
 	db -1

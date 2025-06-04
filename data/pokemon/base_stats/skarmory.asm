@@ -1,11 +1,11 @@
 	db SKARMORY ; 227
 
-	db  65,  80, 140,  70,  40,  70
+	db  85,  80, 140,  70,  40,  70
 	;   hp  atk  def  spd  sat  sdf
 
 	db STEEL, FLYING ; type
 	db 25 ; catch rate
-	db 168 ; base exp
+	db 188 ; base exp
 	db NO_ITEM, NO_ITEM ; items
 	db GENDER_F50 ; gender ratio
 	db 100 ; unknown 1
