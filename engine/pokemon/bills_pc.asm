@@ -1013,14 +1013,20 @@ PCMonInfo:
 	hlcoord 8, 14
 	lb bc, 1, 3
 	call ClearBox
-
+	ld a, TEMPMON
 	call BillsPC_GetSelectedPokemonSpecies
 	and a
 	ret z
 	cp -1
 	ret z
-
-	ld [wTempSpecies], a
+	ld [wTempSpecies], a ; this is the preview page of the pokemon sprite
+	call BillsPC_LoadMonStats
+	call BillsPC_CopyMon
+	ld a, SCGB_BILLS_PC
+	call BillsPC_ApplyPalettes
+	ld a, BOXMON
+	ld [wMonType], a
+	call BillsPC_LoadMonStats
 	hlcoord 1, 4
 	xor a
 	ld b, 7

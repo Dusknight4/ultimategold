@@ -748,6 +748,11 @@ EggHatch_AnimationSequence:
 	ret
 
 Hatch_LoadFrontpicPal:
+	ld a, [wCurPartyMon]
+	ld bc, $30                  ; PARTYMON_STRUCT_LENGTH
+	ld hl, $DA40               ; wPartyMon1DVs
+	call AddNTimes                  ; move to Speed/Special DV
+	ld a, [hl]                 ; A = Speed/Special DV
 	ld [wPlayerHPPal], a
 	ld b, SCGB_EVOLUTION
 	ld c, $0
