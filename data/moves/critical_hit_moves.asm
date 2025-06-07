@@ -9,4 +9,5 @@ CriticalHitMoves:
 	db EXTREMESPEED
 	db TWINEEDLE
 	db MEGAHORN
+	db SPIKE_CANNON
 	db -1

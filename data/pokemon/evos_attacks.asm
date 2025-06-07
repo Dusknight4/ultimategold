@@ -1764,14 +1764,17 @@ PinsirEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, VICEGRIP
 	db 7, FOCUS_ENERGY
-	db 13, BIND
+	db 13, CLAMP
 	db 19, SEISMIC_TOSS
+	db 20, CLAMP
 	db 25, HARDEN
 	db 31, GUILLOTINE
 	db 35, DIG
 	db 37, SUBMISSION
+	db 39, CLAMP
 	db 40, MEGAHORN
 	db 43, SWORDS_DANCE
+	db 50, VICEGRIP
 	db 0 ; no more level-up moves
 
 TaurosEvosAttacks:

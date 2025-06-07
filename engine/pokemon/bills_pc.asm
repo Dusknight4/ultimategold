@@ -1009,7 +1009,6 @@ PCMonInfo:
 	hlcoord 0, 0
 	lb bc, 15, 8
 	call ClearBox
-
 	hlcoord 8, 14
 	lb bc, 1, 3
 	call ClearBox
@@ -1020,13 +1019,12 @@ PCMonInfo:
 	cp -1
 	ret z
 	ld [wTempSpecies], a ; this is the preview page of the pokemon sprite
+	ld a, BOXMON
+	ld [wMonType], a
 	call BillsPC_LoadMonStats
 	call BillsPC_CopyMon
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
-	ld a, BOXMON
-	ld [wMonType], a
-	call BillsPC_LoadMonStats
 	hlcoord 1, 4
 	xor a
 	ld b, 7
