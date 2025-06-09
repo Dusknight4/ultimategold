@@ -15,13 +15,19 @@ MomTriesToBuySomething::
 	ld a, [wMapReentryScriptQueueFlag]
 	and a
 	ret nz
+
+	call Random
+	and %11           ; range: 0–3
+	cp 0              ; only allow 1 in 4 (25%) to proceed
+	ret nz            ; skip if not the lucky one
+
 	call GetMapPhoneService
 	and a
 	ret nz
 	xor a
 	ld [wWhichMomItemSet], a
 	call CheckBalance_MomItem2
-	ret nc
+	ret nc	
 	call Mom_GiveItemOrDoll
 	ret nc
 	ld b, BANK(.Script)
@@ -29,6 +35,7 @@ MomTriesToBuySomething::
 	farcall LoadMemScript
 	scf
 	ret
+
 
 .Script:
 	callasm .ASMFunction
@@ -42,6 +49,11 @@ MomTriesToBuySomething::
 	jr nz, .ok
 	ld hl, wWhichMomItem
 	inc [hl]
+	ld a, [hl]                             ; ← FIX: move value into A
+	cp (MomItems_2.End - MomItems_2) / MOMITEM_SIZE
+	jr c, .ok
+	ld [hl], 0
+
 .ok
 	ld a, PHONE_MOM
 	ld [wCurCaller], a

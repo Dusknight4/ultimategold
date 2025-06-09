@@ -4,7 +4,7 @@ FruitTreeItems:
 	db BERRY        ; ROUTE_29
 	db BERRY        ; ROUTE_30_1
 	db BERRY        ; ROUTE_38
-	db BERRY        ; ROUTE_46_1
+	db GOLD_BERRY   ; ROUTE_46_1
 	db PSNCUREBERRY ; ROUTE_30_2
 	db PSNCUREBERRY ; ROUTE_33
 	db BITTER_BERRY ; ROUTE_31
