@@ -85,8 +85,8 @@ Route35OfficerScriptContest:
 	ifequal FRIDAY, Route35NationalParkGate_NoContestToday
 	faceplayer
 	opentext
-	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue Route35NationalParkGate_ContestIsOver
+	;checkflag ENGINE_DAILY_BUG_CONTEST
+	;iftrue Route35NationalParkGate_ContestIsOver
 	scall Route35NationalParkGate_GetDayOfWeek
 	writetext Route35NationalParkGateOfficer1AskToParticipateText
 	yesorno

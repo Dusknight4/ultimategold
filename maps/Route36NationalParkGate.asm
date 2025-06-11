@@ -146,8 +146,8 @@ Route36OfficerScriptContest:
 	ifequal FRIDAY, _ContestNotOn
 	faceplayer
 	opentext
-	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue Route36Officer_ContestHasConcluded
+	;checkflag ENGINE_DAILY_BUG_CONTEST
+	;iftrue Route36Officer_ContestHasConcluded
 	scall Route36ParkGate_DayToText
 	writetext Route36NationalParkGateOfficer1AskToParticipateText
 	yesorno

@@ -244,12 +244,12 @@ _CGB_Pokedex_Init:
 	ld a, PREDEFPAL_POKEDEX
 	call GetPredefPal
 	call LoadHLPaletteIntoDE ; dex interface palette
-	ld a, [wCurPartySpecies]
+	ld a, [wTempMonDVs + 1]
 	cp $ff
 	jr nz, .is_pokemon
-	ld hl, PokedexQuestionMarkPalette
-	call LoadHLPaletteIntoDE ; green question mark palette
-	jr .got_palette
+	;ld hl, PokedexQuestionMarkPalette
+	;call LoadHLPaletteIntoDE ; green question mark palette
+	jr .is_pokemon
 
 .is_pokemon
 	call GetMonPalettePointer
@@ -284,9 +284,9 @@ _CGB_BillsPC:
 	ld a, [wTempMonDVs + 1]
 	cp $ff
 	jr nz, .GetMonPalette
-	ld hl, BillsPCOrangePalette
-	call LoadHLPaletteIntoDE
-	jr .GotPalette
+	;ld hl, BillsPCOrangePalette
+	;call LoadHLPaletteIntoDE
+	jr .GetMonPalette
 
 .GetMonPalette:
 	ld bc, wTempMonDVs
@@ -848,7 +848,7 @@ _CGB_TradeTube:
 
 _CGB_TrainerOrMonFrontpicPals:
 	ld de, wBGPals1
-	ld a, [wCurPartySpecies]
+	ld a, [wTempMonDVs + 1]
 	ld bc, wTempMonDVs
 	call GetFrontpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
