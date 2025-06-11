@@ -252,7 +252,7 @@ _CGB_Pokedex_Init:
 	jr .is_pokemon
 
 .is_pokemon
-	call GetMonPalettePointer
+	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black ; mon palette
 .got_palette
 	call WipeAttrmap

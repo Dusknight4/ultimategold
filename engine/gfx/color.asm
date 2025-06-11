@@ -7,13 +7,10 @@ CheckShininess:
 
 	ld l, c
 	ld h, b
-
-	inc hl              ; hl now points to Defense/Speed DV
-	ld a, [hl]          ; A = Def/Spd byte
+	ld a, [hl]          ; A = Def DV byte
 	and $0F             ; Isolate Defense DV (lower nibble)
 	cp 8
 	jr c, .not_shiny    ; If Defense DV < 8, not shiny
-
 	scf                 ; Set carry: shiny
 	ret
 

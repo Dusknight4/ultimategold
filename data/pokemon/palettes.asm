@@ -522,29 +522,33 @@ INCLUDE "gfx/pokemon/celebi/shiny.pal"
 	assert_table_length NUM_POKEMON + 1
 
 ; 252
-	RGB 30, 26, 11
-	RGB 23, 16, 00
+	RGB 31, 00, 00
+	RGB 24, 00, 00
 ; 252 shiny
-	RGB 30, 26, 11
-	RGB 23, 16, 00
+	RGB 31, 00, 31
+	RGB 23, 00, 23
 
-INCBIN "gfx/pokemon/egg/egg.gbcpal", middle_colors ; not normal.gbcpal
-INCLUDE "gfx/pokemon/egg/shiny.pal"
+; 253 replaced the egg palettes
+	RGB 00, 31, 00
+	RGB 00, 24, 00
+; 253 shiny
+	RGB 00, 00, 31
+	RGB 00, 00, 24
 
 	assert_table_length EGG + 1
 
 ; 254
-	RGB 30, 26, 11
-	RGB 23, 16, 00
+	RGB 00, 31, 31
+	RGB 00, 23, 23
 ; 254 shiny
-	RGB 30, 26, 11
-	RGB 23, 16, 00
+	RGB 31, 31, 00
+	RGB 23, 23, 00
 
 ; 255
-	RGB 23, 23, 23
-	RGB 17, 17, 17
+	RGB 27, 27, 27
+	RGB 21, 21, 21
 ; 255 shiny
-	RGB 23, 23, 23
-	RGB 17, 17, 17
+	RGB 8, 8, 8
+	RGB 6, 6, 6
 
 	assert_table_length $100
