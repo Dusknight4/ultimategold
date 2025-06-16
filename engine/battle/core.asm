@@ -6267,6 +6267,8 @@ SwapBattlerLevels: ; unreferenced
 BattleWinSlideInEnemyTrainerFrontpic:
 	xor a
 	ld [wEnemyMonDVs + 1], a
+	ld a, $FF
+	ld [wEnemyMonDVs], a
 	call FinishBattleAnim
 	ld a, [wOtherTrainerClass]
 	ld [wTrainerClass], a
@@ -7816,6 +7818,8 @@ InitEnemyTrainer:
 	ld [wTrainerClass], a
 	xor a
 	ld [wTempEnemyMonSpecies], a
+	ld a, $FF
+	ld [wEnemyMonDVs], a
 	callfar GetTrainerAttributes
 	callfar ReadTrainerParty
 

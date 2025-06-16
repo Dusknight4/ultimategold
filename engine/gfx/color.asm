@@ -432,7 +432,49 @@ LoadPalette_White_Col1_Col2_Black:
 	ld [de], a
 	inc de
 	dec c
-	jr nz, .loop
+	jr nz, .loop	
+
+	xor a
+	ld [de], a
+	inc de
+	ld [de], a
+	inc de
+	ret
+LoadPalette_White_Col2_Col1_Black:
+	ld a, LOW(PALRGB_WHITE)
+	ld [de], a
+	inc de
+	ld a, HIGH(PALRGB_WHITE)
+	ld [de], a
+	inc de
+
+	ld c, 2 * PAL_COLOR_SIZE
+	; Skip over Color 1 (2 bytes)
+	inc hl
+	inc hl
+
+	; Load Color 2 (2 bytes)
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+
+	; HL is now after Color 2 — go back to start of Color 1
+	dec hl
+	dec hl
+	dec hl
+	dec hl
+
+	; Load Color 1 (2 bytes)
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+
 
 	xor a
 	ld [de], a
