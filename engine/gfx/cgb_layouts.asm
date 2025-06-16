@@ -301,6 +301,7 @@ _CGB_Pokedex_Init:
 	call GetPredefPal
 	call LoadHLPaletteIntoDE ; dex interface palette
 	ld a, [wTempMonDVs + 1]
+	ld bc, wTempMonDVs
 	cp $ff
 	jr nz, .is_pokemon
 	;ld hl, PokedexQuestionMarkPalette
@@ -914,10 +915,24 @@ _CGB_GamefreakLogo:
 
 _CGB_PlayerOrMonFrontpicPals:
 	ld de, wBGPals1
-	ld a, [wCurPartySpecies]
+	ld a, [wTempMonDVs + 1]
 	ld bc, wTempMonDVs
 	call GetPlayerOrMonPalettePointer
+	; Check if Attack DV is even
+	ld a, [wTempMonDVs]     ; A = Attack/Defense DV byte
+	swap a                  ; Put Attack DV into low nibble
+	and 1                   ; Mask lowest bit of Attack DV
+	jr z, .EvenAttackDV     ; If 0, it's even
+
+	; Odd Attack DV → use Col1_Col2 version
 	call LoadPalette_White_Col1_Col2_Black
+	jr .DonePalette
+
+	.EvenAttackDV:
+	; Even Attack DV → use Col2_Col1 version
+	call LoadPalette_White_Col2_Col1_Black
+
+	.DonePalette:
 	call WipeAttrmap
 	call ApplyAttrmap
 	call ApplyPals

@@ -506,9 +506,11 @@ OakSpeech:
 	call RotateFourPalettesRight
 	call RotateThreePalettesRight
 	xor a
-	ld [wCurPartySpecies], a
+	ld [wTempMonDVs + 1], a
 	ld a, POKEMON_PROF
 	ld [wTrainerClass], a
+	ld a, $FF
+	ld [wTempMonDVs], a
 	call Intro_PrepTrainerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
@@ -529,8 +531,9 @@ OakSpeech:
 	hlcoord 6, 4 ; redundant
 	call PrepMonFrontpic
 
-	xor a
+	ld a, $F0
 	ld [wTempMonDVs], a
+	ld a, MARILL
 	ld [wTempMonDVs + 1], a
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
@@ -545,9 +548,11 @@ OakSpeech:
 	call ClearTilemap
 
 	xor a
-	ld [wCurPartySpecies], a
+	ld [wTempMonDVs + 1], a
 	ld a, POKEMON_PROF
 	ld [wTrainerClass], a
+	ld a, $FF
+	ld [wTempMonDVs], a
 	call Intro_PrepTrainerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
@@ -635,6 +640,7 @@ NamePlayer:
 
 	xor a
 	ld [wCurPartySpecies], a
+	ld [wTempMonDVs + 1], a
 	ld a, CAL
 	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic
