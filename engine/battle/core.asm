@@ -3285,7 +3285,7 @@ LoadEnemyMonToSwitchTo:
 .apply_types
 	; Attack DV 8–15 -> replace type 1.
 	ld a, [wEnemyMonDVs]
-	and $f0
+	bit 7, a
 	jr z, .keep_type_1
 	ld b, d
 
@@ -3786,7 +3786,7 @@ InitBattleMon:
 .apply_battle_fake_types
 	; Attack DV 8-15 -> replace type 1.
 	ld a, [wBattleMonDVs]
-	and $f0
+	bit 7, a
 	jr z, .keep_battle_type_1
 	ld a, d
 	jr .got_battle_type_1
@@ -8112,7 +8112,7 @@ InitEnemyWildmon:
 .apply_wild_fake_types
 	; Attack DV 8-15 -> replace type 1.
 	ld a, [wEnemyMonDVs]
-	and $f0
+	bit 7, a
 	jr z, .keep_wild_type_1
 	ld a, d
 	jr .got_wild_type_1

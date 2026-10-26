@@ -138,7 +138,7 @@ ApplyDonorTypes:
 .apply
 	; Attack DV 8-15 -> replace type 1.
 	ld a, [wTempMonDVs]
-	and $f0
+	bit 7, a
 	jr z, .keep_type_1
 	ld b, d
 .keep_type_1
