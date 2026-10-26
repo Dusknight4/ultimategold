@@ -1224,15 +1224,14 @@ GrimerEvosAttacks:
 
 MukEvosAttacks:
 	db 0 ; no more evolutions
-	; moves are not sorted by level
 	db 1, POISON_GAS
 	db 1, POUND
 	db 1, HARDEN
+	db 23, MINIMIZE
+	db 31, SCREECH
 	db 33, HARDEN
 	db 37, DISABLE
 	db 45, SLUDGE
-	db 23, MINIMIZE
-	db 31, SCREECH
 	db 45, ACID_ARMOR
 	db 60, SLUDGE_BOMB
 	db 0 ; no more level-up moves
@@ -2378,8 +2377,8 @@ AriadosEvosAttacks:
 	db 21, BITE
 	db 25, LEECH_LIFE
 	db 30, SPIKE_CANNON
-	db 35, TWINEEDLE
 	db 34, FURY_SWIPES
+	db 35, TWINEEDLE
 	db 43, SPIDER_WEB
 	db 50, MEGAHORN
 	db 53, SCREECH
@@ -2888,8 +2887,8 @@ SteelixEvosAttacks:
 	db 27, RAGE
 	db 36, SANDSTORM
 	db 39, ROCK_SLIDE
-	db 41, MAGNITUDE
 	db 40, SLAM
+	db 41, MAGNITUDE
 	db 49, CRUNCH
 	db 50, IRON_TAIL
 	db 0 ; no more level-up moves

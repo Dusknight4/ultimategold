@@ -543,28 +543,75 @@ FillMoves:
 	ld [wCurPartySpecies], a
 
 	; For each move slot, 50/50 use real move or template move.
+	; Template moves the mon already knows are skipped.
 	ld hl, wListMoves_MoveIndicesBuffer
-	ld c, NUM_MOVES
+	ld c, 0
 
 .merge_loop
-	ld a, [hl]
+	ld a, [hli]
 	and a
+	jr z, .merge_next
+	ld b, a
+	call .KnowsMove
 	jr z, .merge_next
 	call Random
 	bit 0, a
 	jr z, .merge_next
-	ld a, [hl]
-	ld [de], a
+	push hl
+	ld h, 0
+	ld l, c
+	add hl, de
+	ld [hl], b
+	pop hl
 
 .merge_next
-	inc hl
-	inc de
+	inc c
+	ld a, c
+	cp NUM_MOVES
+	jr c, .merge_loop
+
+	; Pack the moves so no move comes after an empty slot.
+	ld b, NUM_MOVES - 1
+.pack_pass
+	ld h, d
+	ld l, e
+	ld c, NUM_MOVES - 1
+.pack_step
+	ld a, [hli]
+	and a
+	jr nz, .pack_next
+	ld a, [hld]
+	ld [hli], a
+	xor a
+	ld [hl], a
+.pack_next
 	dec c
-	jr nz, .merge_loop
+	jr nz, .pack_step
+	dec b
+	jr nz, .pack_pass
 
 .done_all
 	pop bc
 	pop de
+	pop hl
+	ret
+
+.KnowsMove:
+; z if the moves at de already include move b
+	push hl
+	push bc
+	ld h, d
+	ld l, e
+	ld c, NUM_MOVES
+.knows_move_loop
+	ld a, [hli]
+	cp b
+	jr z, .knows_move_done
+	dec c
+	jr nz, .knows_move_loop
+	or 1 ; nz
+.knows_move_done
+	pop bc
 	pop hl
 	ret
 
