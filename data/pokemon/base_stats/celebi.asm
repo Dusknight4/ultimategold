@@ -1,6 +1,6 @@
 	db CELEBI ; 251
 
-	db 100, 100, 100, 100, 100, 100
+	db 120, 100, 105, 100, 120, 105
 	;   hp  atk  def  spd  sat  sdf
 
 	db PSYCHIC_TYPE, GRASS ; type

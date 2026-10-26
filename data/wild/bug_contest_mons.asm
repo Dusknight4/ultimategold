@@ -1,11 +1,12 @@
 ContestMons:
 	;   %, species,   min, max
-	db 10, CATERPIE,    7, 18
-	db 10, WEEDLE,      7, 18
+	db  7, CATERPIE,    7, 18
+	db  7, WEEDLE,      7, 18
 	db  7, SPINARAK,    6, 19
 	db  7, METAPOD,     9, 18
 	db  7, KAKUNA,      9, 18
 	db  7, LEDYBA,      8, 17
+	db  5, PINECO,     10, 17
 	db  5, BUTTERFREE, 12, 18
 	db  5, BEEDRILL,   12, 18
 	db  9, VENONAT,    10, 16
@@ -20,3 +21,4 @@ ContestMons:
 	db  1, HERACROSS,  13, 14
 	db  1, SHUCKLE,    11, 19
 	db  1, SCIZOR,     17, 18
+	db  1, FORRETRESS, 17, 22

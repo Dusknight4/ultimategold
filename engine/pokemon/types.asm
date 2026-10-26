@@ -1,9 +1,18 @@
+PrintDonorMonTypes:
+; Like PrintMonTypes, but with the types the mon in wTempMonDVs
+; gets from its template species, as in battle.
+	push hl
+	call GetBaseData
+	call ApplyDonorTypes
+	jr PrintMonTypes.got_base_data
+
 PrintMonTypes:
 ; Print one or both types of [wCurSpecies]
 ; on the stats screen at hl.
 
 	push hl
 	call GetBaseData
+.got_base_data
 	pop hl
 
 	push hl
@@ -88,5 +97,77 @@ GetTypeName:
 	ld de, wStringBuffer1
 	ld bc, MOVE_NAME_LENGTH
 	jp CopyBytes
+
+ApplyDonorTypes:
+; Replace wBaseType1/2 of [wCurSpecies] with the types the mon in
+; wTempMonDVs gets from its template species (Speed/Special DV byte),
+; the same way the battle code does.
+	push hl
+	ld a, [wCurSpecies]
+	push af
+	ld a, [wBaseType1]
+	ld b, a
+	ld a, [wBaseType2]
+	ld c, a
+
+	ld a, [wTempMonDVs + 1]
+	and a
+	jr z, .curse
+	cp $fc
+	jr nc, .overflow
+
+	ld [wCurSpecies], a
+	call GetBaseData
+	ld a, [wBaseType1]
+	ld d, a
+	ld a, [wBaseType2]
+	ld e, a
+	jr .apply
+
+.overflow
+	sub $fc
+	add a
+	ld e, a
+	ld d, 0
+	ld hl, .OverflowTypes
+	add hl, de
+	ld a, [hli]
+	ld d, a
+	ld e, [hl]
+
+.apply
+	; Attack DV 8-15 -> replace type 1.
+	ld a, [wTempMonDVs]
+	and $f0
+	jr z, .keep_type_1
+	ld b, d
+.keep_type_1
+	; Defense DV odd -> replace type 2.
+	ld a, [wTempMonDVs]
+	bit 0, a
+	jr z, .done
+	ld c, e
+	jr .done
+
+.curse
+	ld b, CURSE_TYPE
+	ld c, b
+
+.done
+	pop af
+	ld [wCurSpecies], a
+	call GetBaseData
+	ld a, b
+	ld [wBaseType1], a
+	ld a, c
+	ld [wBaseType2], a
+	pop hl
+	ret
+
+.OverflowTypes:
+	db FIRE, ICE
+	db DRAGON, STEEL
+	db DARK, ICE
+	db DRAGON, DARK
 
 INCLUDE "data/types/names.asm"

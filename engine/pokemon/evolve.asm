@@ -412,6 +412,31 @@ EvolvingText:
 	text_end
 
 LearnLevelMoves:
+	; First check real species.
+	ld a, [wTempSpecies]
+	push af
+	call .LearnLevelMovesForSpecies
+
+	; Then check template species = full Speed/Special DV byte.
+	ld a, MON_DVS
+	call GetPartyParamLocation
+	inc hl
+	ld a, [hl]
+	and a
+	jr z, .done_all
+	cp $fc
+	jr nc, .done_all
+
+	ld [wTempSpecies], a
+	call .LearnLevelMovesForSpecies
+
+.done_all
+	pop af
+	ld [wTempSpecies], a
+	ld [wCurPartySpecies], a
+	ret
+
+.LearnLevelMovesForSpecies:
 	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
 	dec a
@@ -448,6 +473,7 @@ LearnLevelMoves:
 	call AddNTimes
 
 	ld b, NUM_MOVES
+
 .check_move
 	ld a, [hli]
 	cp d
@@ -455,8 +481,8 @@ LearnLevelMoves:
 	dec b
 	jr nz, .check_move
 	jr .learn
-.has_move
 
+.has_move
 	pop hl
 	jr .find_move
 
@@ -471,13 +497,78 @@ LearnLevelMoves:
 	jr .find_move
 
 .done
-	ld a, [wCurPartySpecies]
-	ld [wTempSpecies], a
 	ret
 
 FillMoves:
-; Fill in moves at de for wCurPartySpecies at wCurPartyLevel
+; Fill in moves at de for wCurPartySpecies at wCurPartyLevel.
+; Then 50/50 replace each slot with the Speed/Special DV template species' move.
 
+	push hl
+	push de
+	push bc
+
+	; First fill moves from the real species normally.
+	call .FillMovesForCurrentSpecies
+
+	; Use full Speed/Special DV byte as template species.
+	ld a, [wEnemyMonDVs + 1]
+	and a
+	jr z, .done_all
+	cp $fc
+	jr nc, .done_all
+	ld b, a
+
+	; Clear temp move buffer.
+	ld hl, wListMoves_MoveIndicesBuffer
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+	; Fill template species moves into temp buffer.
+	ld a, [wCurPartySpecies]
+	push af
+	push de
+	ld a, b
+	ld [wCurPartySpecies], a
+	ld a, [wSkipMovesBeforeLevelUp]
+	and a
+	jr nz, .direct
+	ld de, wListMoves_MoveIndicesBuffer
+.direct
+	call .FillMovesForCurrentSpecies
+	pop de
+	pop af
+	ld [wCurPartySpecies], a
+
+	; For each move slot, 50/50 use real move or template move.
+	ld hl, wListMoves_MoveIndicesBuffer
+	ld c, NUM_MOVES
+
+.merge_loop
+	ld a, [hl]
+	and a
+	jr z, .merge_next
+	call Random
+	bit 0, a
+	jr z, .merge_next
+	ld a, [hl]
+	ld [de], a
+
+.merge_next
+	inc hl
+	inc de
+	dec c
+	jr nz, .merge_loop
+
+.done_all
+	pop bc
+	pop de
+	pop hl
+	ret
+
+.FillMovesForCurrentSpecies:
 	push hl
 	push de
 	push bc
@@ -492,6 +583,7 @@ FillMoves:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+
 .GoToAttacks:
 	ld a, [hli]
 	and a
@@ -500,8 +592,10 @@ FillMoves:
 
 .NextMove:
 	pop de
+
 .GetMove:
 	inc hl
+
 .GetLevel:
 	ld a, [hli]
 	and a
@@ -520,6 +614,7 @@ FillMoves:
 .CheckMove:
 	push de
 	ld c, NUM_MOVES
+
 .CheckRepeat:
 	ld a, [de]
 	inc de
@@ -530,6 +625,7 @@ FillMoves:
 	pop de
 	push de
 	ld c, NUM_MOVES
+
 .CheckSlot:
 	ld a, [de]
 	and a

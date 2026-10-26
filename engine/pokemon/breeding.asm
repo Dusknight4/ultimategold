@@ -2,6 +2,17 @@ CheckBreedmonCompatibility:
 	call .CheckBreedingGroupCompatibility
 	ld c, $0
 	jp nc, .done
+
+	; Ditto already passed egg group compatibility.
+	; If either parent is Ditto, skip gender checks.
+	ld a, [wBreedMon1Species]
+	cp DITTO
+	jr z, .compute
+
+	ld a, [wBreedMon2Species]
+	cp DITTO
+	jr z, .compute
+
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
 	ld a, [wBreedMon1DVs]
@@ -39,18 +50,7 @@ CheckBreedmonCompatibility:
 
 .genderless
 	ld c, $0
-	ld a, [wBreedMon1Species]
-	cp DITTO
-	jr z, .ditto1
-	ld a, [wBreedMon2Species]
-	cp DITTO
-	jr nz, .done
-	jr .compute
-
-.ditto1
-	ld a, [wBreedMon2Species]
-	cp DITTO
-	jr z, .done
+	jr .done
 
 .compute
 	call .CheckDVs
@@ -63,8 +63,8 @@ CheckBreedmonCompatibility:
 	ld c, 254
 	jr z, .compare_ids
 	ld c, 128
+
 .compare_ids
-	; Speed up
 	ld a, [wBreedMon1ID]
 	ld b, a
 	ld a, [wBreedMon2ID]
@@ -85,11 +85,11 @@ CheckBreedmonCompatibility:
 	ret
 
 .CheckDVs:
-; If Defense DVs match and the lower 3 bits of the Special DVs match,
-; avoid breeding
+; Force DVs to appear different so breeding always allowed
 	ld a, [wBreedMon1DVs]
 	and %1111
 	ld b, a
+	inc b
 	ld a, [wBreedMon2DVs]
 	and %1111
 	cp b
@@ -101,6 +101,7 @@ CheckBreedmonCompatibility:
 	and %111
 	cp b
 	ret
+
 
 .CheckBreedingGroupCompatibility:
 ; If either mon is in the No Eggs group,
@@ -182,7 +183,16 @@ DoEggStep::
 	ret z
 	cp EGG
 	jr nz, .next
-	dec [hl]
+	ld a, [hl]
+	cp 6
+	jr c, .set_zero
+	sub 6
+	jr .store
+	.set_zero
+	xor a ; A = 0
+	.store
+	ld [hl], a
+
 	jr nz, .next
 	ld a, 1
 	and a
@@ -749,14 +759,20 @@ EggHatch_AnimationSequence:
 
 Hatch_LoadFrontpicPal:
 	ld a, [wCurPartyMon]
-	ld bc, $30                  ; PARTYMON_STRUCT_LENGTH
-	ld hl, $DA40               ; wPartyMon1DVs
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld hl, wPartyMon1DVs + 1
 	call AddNTimes                  ; move to Speed/Special DV
 	ld a, [hl]                 ; A = Speed/Special DV
 	ld [wPlayerHPPal], a
+	; Move HL back 1 byte to get Attack/Defense DV
+	dec hl
+	ld a, [hl]
+	ld [wTempMonDVs], a
 	ld b, SCGB_EVOLUTION
 	ld c, $0
 	jp GetSGBLayout
+
+	
 
 EggHatch_CrackShell:
 	ld a, [wFrameCounter]

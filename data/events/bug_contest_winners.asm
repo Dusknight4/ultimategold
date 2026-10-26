@@ -28,7 +28,7 @@ BugContestant_BugCatcherDon:
 BugContestant_BugCatcherEd:
 	db BUG_CATCHER, ED
 	dbw BUTTERFREE, 286
-	dbw HERACROSS,  391
+	dbw HERACROSS,  371
 	dbw CATERPIE,   237
 
 BugContestant_CooltrainerMNick:
@@ -63,9 +63,9 @@ BugContestant_PicnickerCindy:
 
 BugContestant_BugCatcherJosh:
 	db BUG_CATCHER, JOSH
-	dbw SCYTHER,    326
 	dbw ARIADOS,    372
 	dbw SCIZOR,     436
+	dbw METAPOD,    282
 
 BugContestant_YoungsterSamuel:
 	db YOUNGSTER, SAMUEL

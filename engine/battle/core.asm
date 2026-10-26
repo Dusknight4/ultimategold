@@ -3243,6 +3243,71 @@ LoadEnemyMonToSwitchTo:
 	ld [wCurPartySpecies], a
 	call LoadEnemyMon
 
+	; Save real types.
+	ld a, [wEnemyMonType1]
+	ld b, a
+	ld a, [wEnemyMonType2]
+	ld c, a
+
+	; Use full Speed/Special DV byte as template species.
+	ld a, [wEnemyMonDVs + 1]
+
+	and a
+	jr z, .types_curse
+	cp $fc
+	jr nc, .types_overflow
+
+	ld [wCurSpecies], a
+	call GetBaseData
+	ld a, [wBaseType1]
+	ld d, a
+	ld a, [wBaseType2]
+	ld e, a
+	jr .apply_types
+
+.types_curse
+	ld a, CURSE_TYPE
+	ld [wEnemyMonType1], a
+	ld [wEnemyMonType2], a
+	jr .types_done
+
+.types_overflow
+	sub $fc
+	add a
+	ld e, a
+	ld d, 0
+	ld hl, .OverflowTypes
+	add hl, de
+	ld a, [hli]
+	ld d, a
+	ld e, [hl]
+
+.apply_types
+	; Attack DV 8–15 -> replace type 1.
+	ld a, [wEnemyMonDVs]
+	and $f0
+	jr z, .keep_type_1
+	ld b, d
+
+.keep_type_1
+	ld a, b
+	ld [wEnemyMonType1], a
+
+	; Defense DV odd -> replace type 2.
+	ld a, [wEnemyMonDVs]
+	bit 0, a
+	jr z, .keep_type_2
+	ld c, e
+
+.keep_type_2
+	ld a, c
+	ld [wEnemyMonType2], a
+
+.types_done
+	ld a, [wEnemyMonSpecies]
+	ld [wCurSpecies], a
+	call GetBaseData
+
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr nz, .skip_unown
@@ -3253,14 +3318,20 @@ LoadEnemyMonToSwitchTo:
 	predef GetUnownLetter
 	ld a, [wUnownLetter]
 	ld [wFirstUnownSeen], a
-.skip_unown
 
+.skip_unown
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	ld [wEnemyHPAtTimeOfPlayerSwitch], a
 	ld a, [hl]
 	ld [wEnemyHPAtTimeOfPlayerSwitch + 1], a
 	ret
+
+.OverflowTypes:
+	db FIRE, ICE
+	db DRAGON, STEEL
+	db DARK, ICE
+	db DRAGON, DARK
 
 CheckWhetherToAskSwitch:
 	ld a, [wBattleHasJustStarted]
@@ -3648,15 +3719,103 @@ InitBattleMon:
 	ld de, wBattleMonLevel
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
 	call CopyBytes
+
 	ld a, [wBattleMonSpecies]
 	ld [wTempBattleMonSpecies], a
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	call GetBaseData
+
+	; Save original species types in b/c.
 	ld a, [wBaseType1]
-	ld [wBattleMonType1], a
+	ld b, a
 	ld a, [wBaseType2]
+	ld c, a
+
+	; Use full Speed/Special DV byte as template species.
+	ld a, [wBattleMonDVs + 1]
+
+	; If result is 0 → force pure ??? / CurseType.
+	and a
+	jr z, .battle_types_curse
+
+	; Manually handle overflow pseudo-species IDs.
+	cp $fc
+	jr z, .battle_types_fire_ice
+	cp $fd
+	jr z, .battle_types_dragon_steel
+	cp $fe
+	jr z, .battle_types_dark_ice
+	cp $ff
+	jr z, .battle_types_dragon_dark
+
+	; Normal template species path.
+	ld [wCurSpecies], a
+	call GetBaseData
+	ld a, [wBaseType1]
+	ld d, a
+	ld a, [wBaseType2]
+	ld e, a
+	jr .apply_battle_fake_types
+
+.battle_types_curse
+	ld a, CURSE_TYPE
+	ld [wBattleMonType1], a
 	ld [wBattleMonType2], a
+	jr .battle_types_done
+
+.battle_types_fire_ice
+	ld d, FIRE
+	ld e, ICE
+	jr .apply_battle_fake_types
+
+.battle_types_dragon_steel
+	ld d, DRAGON
+	ld e, STEEL
+	jr .apply_battle_fake_types
+
+.battle_types_dark_ice
+	ld d, DARK
+	ld e, ICE
+	jr .apply_battle_fake_types
+
+.battle_types_dragon_dark
+	ld d, DRAGON
+	ld e, DARK
+
+.apply_battle_fake_types
+	; Attack DV 8-15 -> replace type 1.
+	ld a, [wBattleMonDVs]
+	and $f0
+	jr z, .keep_battle_type_1
+	ld a, d
+	jr .got_battle_type_1
+
+.keep_battle_type_1
+	ld a, b
+
+.got_battle_type_1
+	ld [wBattleMonType1], a
+
+	; Defense DV odd -> replace type 2.
+	ld a, [wBattleMonDVs]
+	bit 0, a
+	jr z, .keep_battle_type_2
+	ld a, e
+	jr .got_battle_type_2
+
+.keep_battle_type_2
+	ld a, c
+
+.got_battle_type_2
+	ld [wBattleMonType2], a
+
+.battle_types_done
+	; Restore real species/base data after template lookup.
+	ld a, [wBattleMonSpecies]
+	ld [wCurSpecies], a
+	call GetBaseData
+
 	ld hl, wPartyMonNicknames
 	ld a, [wCurBattleMon]
 	call SkipNames
@@ -3713,7 +3872,7 @@ ResetPlayerStatLevels:
 	ret
 
 InitEnemyMon:
-	ld a, [wCurPartyMon]
+	ld a, [wCurPartyMon]	
 	ld hl, wOTPartyMon1Species
 	call GetPartyLocation
 	ld de, wEnemyMonSpecies
@@ -3756,6 +3915,7 @@ InitEnemyMon:
 	ld hl, wBaseStats
 	ld de, wEnemyMonBaseStats
 	ld b, NUM_STATS - 1
+	
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -5808,11 +5968,22 @@ LoadEnemyMon:
 .InitDVs:
 ; Trainer DVs
 
-; Make trainer DVs random like wild Pokémon
+; Trainer DVs are rolled randomly once when the party is built,
+; so reuse the party struct's DVs here.
 	ld a, [wBattleMode]
 	dec a
-	jr nz, .GenerateDVs  ; was .UpdateDVs before — now skip to random generation
+	jr z, .WildDVs
+	dec a
+	jr nz, .GenerateDVs ; not in battle
+	ld a, [wCurPartyMon]
+	ld hl, wOTPartyMon1DVs
+	call GetPartyLocation
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
+	jr .UpdateDVs
 
+.WildDVs:
 
 ; Wild DVs
 ; Here's where the fun starts
@@ -7822,6 +7993,8 @@ InitEnemyTrainer:
 	ld [wEnemyMonDVs], a
 	callfar GetTrainerAttributes
 	callfar ReadTrainerParty
+	xor a ; trainer pic palette
+	ld [wEnemyMonDVs + 1], a
 
 	; RIVAL1's first mon has no held item
 	ld a, [wTrainerClass]
@@ -7874,6 +8047,101 @@ InitEnemyWildmon:
 	ld a, WILD_BATTLE
 	ld [wBattleMode], a
 	call LoadEnemyMon
+
+	ld a, [wEnemyMonSpecies]
+	ld [wCurSpecies], a
+	call GetBaseData
+
+	; Save original species types in b/c.
+	ld a, [wBaseType1]
+	ld b, a
+	ld a, [wBaseType2]
+	ld c, a
+
+	; Use full Speed/Special DV byte as template species.
+	ld a, [wEnemyMonDVs + 1]
+
+	; If result is 0 → force pure ??? / CurseType.
+	and a
+	jr z, .wild_types_curse
+
+	; Manually handle overflow pseudo-species IDs.
+	cp $fc
+	jr z, .wild_types_fire_ice
+	cp $fd
+	jr z, .wild_types_dragon_steel
+	cp $fe
+	jr z, .wild_types_dark_ice
+	cp $ff
+	jr z, .wild_types_dragon_dark
+
+	; Normal template species path.
+	ld [wCurSpecies], a
+	call GetBaseData
+	ld a, [wBaseType1]
+	ld d, a
+	ld a, [wBaseType2]
+	ld e, a
+	jr .apply_wild_fake_types
+
+.wild_types_curse
+	ld a, CURSE_TYPE
+	ld [wEnemyMonType1], a
+	ld [wEnemyMonType2], a
+	jr .wild_types_done
+
+.wild_types_fire_ice
+	ld d, FIRE
+	ld e, ICE
+	jr .apply_wild_fake_types
+
+.wild_types_dragon_steel
+	ld d, DRAGON
+	ld e, STEEL
+	jr .apply_wild_fake_types
+
+.wild_types_dark_ice
+	ld d, DARK
+	ld e, ICE
+	jr .apply_wild_fake_types
+
+.wild_types_dragon_dark
+	ld d, DRAGON
+	ld e, DARK
+
+.apply_wild_fake_types
+	; Attack DV 8-15 -> replace type 1.
+	ld a, [wEnemyMonDVs]
+	and $f0
+	jr z, .keep_wild_type_1
+	ld a, d
+	jr .got_wild_type_1
+
+.keep_wild_type_1
+	ld a, b
+
+.got_wild_type_1
+	ld [wEnemyMonType1], a
+
+	; Defense DV odd -> replace type 2.
+	ld a, [wEnemyMonDVs]
+	bit 0, a
+	jr z, .keep_wild_type_2
+	ld a, e
+	jr .got_wild_type_2
+
+.keep_wild_type_2
+	ld a, c
+
+.got_wild_type_2
+	ld [wEnemyMonType2], a
+
+.wild_types_done
+	; Restore real species/base data after template lookup.
+	ld a, [wEnemyMonSpecies]
+	ld [wCurSpecies], a
+	call GetBaseData
+
 	ld hl, wEnemyMonMoves
 	ld de, wWildMonMoves
 	ld bc, NUM_MOVES
@@ -7892,6 +8160,7 @@ InitEnemyWildmon:
 	jr nz, .skip_unown
 	ld a, [wUnownLetter]
 	ld [wFirstUnownSeen], a
+
 .skip_unown
 	ld de, vTiles2
 	predef GetMonFrontpic

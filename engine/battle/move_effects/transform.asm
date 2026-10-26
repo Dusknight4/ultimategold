@@ -53,13 +53,12 @@ BattleCommand_Transform:
 	ld [wEnemyBackupDVs + 1], a
 	dec de
 .mimic_enemy_backup
-; copy DVs
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
+; skip copying DVs but maintain pointer logic
+	ld a, [hli]     ; read first DV byte
+	inc de          ; skip writing it
+	ld a, [hli]     ; read second DV byte
+	inc de          ; skip writing it
+
 ; move pointer to stats
 	ld bc, wBattleMonStats - wBattleMonPP
 	add hl, bc
@@ -72,6 +71,7 @@ BattleCommand_Transform:
 	pop hl
 	ld bc, wBattleMonStructEnd - wBattleMonStats
 	call CopyBytes
+
 ; init the power points
 	ld bc, wBattleMonMoves - wBattleMonStructEnd
 	add hl, bc

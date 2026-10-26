@@ -119,7 +119,7 @@ EvolutionAnimation:
 	ld a, TRUE
 	ld [wEvolutionCanceled], a
 
-	ld a, [wEvolutionOldSpecies]
+	ld a, [wTempMonDVs + 1]
 	jr .return
 
 .GetSGBLayout:

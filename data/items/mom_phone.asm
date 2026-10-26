@@ -5,7 +5,7 @@ MACRO momitem
 ENDM
 
 MomItems_1:
-	momitem      0,    50, MOM_ITEM, POTION
+	momitem      0,   50, MOM_ITEM, POTION
 	momitem      0,    90, MOM_ITEM, ANTIDOTE
 	momitem      0,   180, MOM_ITEM, POKE_BALL
 	momitem      0,   450, MOM_ITEM, ESCAPE_ROPE

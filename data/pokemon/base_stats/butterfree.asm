@@ -1,12 +1,12 @@
 	db BUTTERFREE ; 012
 
-	db  81, 70,  60,  95,  105,  80
+	db  81, 70,  60,  105,  105,  80
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, FLYING ; type
 	db 45 ; catch rate
-	db 160 ; base exp
-	db NO_ITEM, SILVERPOWDER ; items
+	db 180 ; base exp
+	db SILVERPOWDER, GOLD_BERRY ; items
 	db GENDER_F50 ; gender ratio
 	db 100 ; unknown 1
 	db 15 ; step cycles to hatch

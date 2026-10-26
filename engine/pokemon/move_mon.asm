@@ -133,7 +133,6 @@ rept NUM_MOVES - 1
 endr
 	ld [hl], a
 	ld [wSkipMovesBeforeLevelUp], a
-	predef FillMoves
 
 .next
 	pop de
@@ -178,12 +177,7 @@ endr
 	push hl
 	ld a, [wMonType]
 	and $f
-	jr z, .registerpokedex
-
-	push hl
-	farcall GetTrainerDVs
-	pop hl
-	jr .initializeDVs
+	jr nz, .random_dvs ; trainer mon
 
 .registerpokedex
 	ld a, [wCurPartySpecies]
@@ -202,6 +196,7 @@ endr
 	and a
 	jr nz, .copywildmonDVs
 
+.random_dvs
 	call Random
 	ld b, a
 	call Random
@@ -211,6 +206,7 @@ endr
 	ld [de], a
 	inc de
 	ld a, c
+	ld [wEnemyMonDVs + 1], a
 	ld [de], a
 	inc de
 
@@ -219,6 +215,11 @@ endr
 	push de
 	inc hl
 	inc hl
+	ld d, h
+	ld e, l
+	predef FillMoves
+	pop de
+	push de
 	call FillPP
 	pop de
 	pop hl
@@ -876,6 +877,10 @@ RetrieveBreedmon:
 	call AddNTimes
 	ld d, h
 	ld e, l
+	ld hl, MON_DVS + 1 - MON_MOVES
+	add hl, de
+	ld a, [hl]
+	ld [wEnemyMonDVs + 1], a
 	ld a, TRUE
 	ld [wSkipMovesBeforeLevelUp], a
 	predef FillMoves

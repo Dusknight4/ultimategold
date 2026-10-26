@@ -1,12 +1,12 @@
 	db GOLEM ; 076
 
-	db  110, 110, 180, 45, 55, 85
+	db  110, 110, 190, 45, 55, 85
 	;   hp  atk  def  spd  sat  sdf
 
 	db ROCK, GROUND ; type
 	db 45 ; catch rate
 	db 207 ; base exp
-	db NO_ITEM, EVERSTONE ; items
+	db HARD_STONE, EVERSTONE ; items
 	db GENDER_F50 ; gender ratio
 	db 100 ; unknown 1
 	db 15 ; step cycles to hatch

@@ -1,12 +1,9 @@
 PokemonPalettes:
-; entries correspond to Pokémon species, two apiece
+; Synced from UltimateCrystal: these colors must stay identical in
+; UltimateCrystal, UltimateGold and ultimatered-gbc so traded Pokemon
+; keep their colors. Index = Speed/Special DV byte (donor species).
+; 2 middle palettes, normal and shiny, with 2 colors each
 
-; Each normal.gbcpal is generated from the corresponding .png, and
-; only the middle two colors are included, not black or white.
-; (Back sprites are used since they are the same in Gold and Silver.)
-; Shiny palettes are defined directly, not generated.
-
-	; 2 middle palettes, front and shiny, with 2 colors each
 	table_width PAL_COLOR_SIZE * 2 * 2
 
 ; 000
@@ -16,510 +13,1762 @@ PokemonPalettes:
 	RGB 30, 22, 17
 	RGB 16, 14, 19
 
-INCBIN "gfx/pokemon/bulbasaur/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/bulbasaur/shiny.pal"
-INCBIN "gfx/pokemon/ivysaur/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/ivysaur/shiny.pal"
-INCBIN "gfx/pokemon/venusaur/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/venusaur/shiny.pal"
-INCBIN "gfx/pokemon/charmander/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/charmander/shiny.pal"
-INCBIN "gfx/pokemon/charmeleon/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/charmeleon/shiny.pal"
-INCBIN "gfx/pokemon/charizard/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/charizard/shiny.pal"
-INCBIN "gfx/pokemon/squirtle/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/squirtle/shiny.pal"
-INCBIN "gfx/pokemon/wartortle/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/wartortle/shiny.pal"
-INCBIN "gfx/pokemon/blastoise/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/blastoise/shiny.pal"
-INCBIN "gfx/pokemon/caterpie/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/caterpie/shiny.pal"
-INCBIN "gfx/pokemon/metapod/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/metapod/shiny.pal"
-INCBIN "gfx/pokemon/butterfree/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/butterfree/shiny.pal"
-INCBIN "gfx/pokemon/weedle/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/weedle/shiny.pal"
-INCBIN "gfx/pokemon/kakuna/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/kakuna/shiny.pal"
-INCBIN "gfx/pokemon/beedrill/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/beedrill/shiny.pal"
-INCBIN "gfx/pokemon/pidgey/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/pidgey/shiny.pal"
-INCBIN "gfx/pokemon/pidgeotto/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/pidgeotto/shiny.pal"
-INCBIN "gfx/pokemon/pidgeot/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/pidgeot/shiny.pal"
-INCBIN "gfx/pokemon/rattata/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/rattata/shiny.pal"
-INCBIN "gfx/pokemon/raticate/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/raticate/shiny.pal"
-INCBIN "gfx/pokemon/spearow/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/spearow/shiny.pal"
-INCBIN "gfx/pokemon/fearow/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/fearow/shiny.pal"
-INCBIN "gfx/pokemon/ekans/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/ekans/shiny.pal"
-INCBIN "gfx/pokemon/arbok/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/arbok/shiny.pal"
-INCBIN "gfx/pokemon/pikachu/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/pikachu/shiny.pal"
-INCBIN "gfx/pokemon/raichu/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/raichu/shiny.pal"
-INCBIN "gfx/pokemon/sandshrew/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/sandshrew/shiny.pal"
-INCBIN "gfx/pokemon/sandslash/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/sandslash/shiny.pal"
-INCBIN "gfx/pokemon/nidoran_f/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/nidoran_f/shiny.pal"
-INCBIN "gfx/pokemon/nidorina/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/nidorina/shiny.pal"
-INCBIN "gfx/pokemon/nidoqueen/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/nidoqueen/shiny.pal"
-INCBIN "gfx/pokemon/nidoran_m/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/nidoran_m/shiny.pal"
-INCBIN "gfx/pokemon/nidorino/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/nidorino/shiny.pal"
-INCBIN "gfx/pokemon/nidoking/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/nidoking/shiny.pal"
-INCBIN "gfx/pokemon/clefairy/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/clefairy/shiny.pal"
-INCBIN "gfx/pokemon/clefable/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/clefable/shiny.pal"
-INCBIN "gfx/pokemon/vulpix/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/vulpix/shiny.pal"
-INCBIN "gfx/pokemon/ninetales/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/ninetales/shiny.pal"
-INCBIN "gfx/pokemon/jigglypuff/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/jigglypuff/shiny.pal"
-INCBIN "gfx/pokemon/wigglytuff/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/wigglytuff/shiny.pal"
-INCBIN "gfx/pokemon/zubat/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/zubat/shiny.pal"
-INCBIN "gfx/pokemon/golbat/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/golbat/shiny.pal"
-INCBIN "gfx/pokemon/oddish/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/oddish/shiny.pal"
-INCBIN "gfx/pokemon/gloom/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/gloom/shiny.pal"
-INCBIN "gfx/pokemon/vileplume/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/vileplume/shiny.pal"
-INCBIN "gfx/pokemon/paras/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/paras/shiny.pal"
-INCBIN "gfx/pokemon/parasect/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/parasect/shiny.pal"
-INCBIN "gfx/pokemon/venonat/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/venonat/shiny.pal"
-INCBIN "gfx/pokemon/venomoth/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/venomoth/shiny.pal"
-INCBIN "gfx/pokemon/diglett/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/diglett/shiny.pal"
-INCBIN "gfx/pokemon/dugtrio/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/dugtrio/shiny.pal"
-INCBIN "gfx/pokemon/meowth/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/meowth/shiny.pal"
-INCBIN "gfx/pokemon/persian/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/persian/shiny.pal"
-INCBIN "gfx/pokemon/psyduck/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/psyduck/shiny.pal"
-INCBIN "gfx/pokemon/golduck/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/golduck/shiny.pal"
-INCBIN "gfx/pokemon/mankey/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/mankey/shiny.pal"
-INCBIN "gfx/pokemon/primeape/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/primeape/shiny.pal"
-INCBIN "gfx/pokemon/growlithe/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/growlithe/shiny.pal"
-INCBIN "gfx/pokemon/arcanine/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/arcanine/shiny.pal"
-INCBIN "gfx/pokemon/poliwag/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/poliwag/shiny.pal"
-INCBIN "gfx/pokemon/poliwhirl/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/poliwhirl/shiny.pal"
-INCBIN "gfx/pokemon/poliwrath/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/poliwrath/shiny.pal"
-INCBIN "gfx/pokemon/abra/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/abra/shiny.pal"
-INCBIN "gfx/pokemon/kadabra/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/kadabra/shiny.pal"
-INCBIN "gfx/pokemon/alakazam/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/alakazam/shiny.pal"
-INCBIN "gfx/pokemon/machop/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/machop/shiny.pal"
-INCBIN "gfx/pokemon/machoke/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/machoke/shiny.pal"
-INCBIN "gfx/pokemon/machamp/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/machamp/shiny.pal"
-INCBIN "gfx/pokemon/bellsprout/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/bellsprout/shiny.pal"
-INCBIN "gfx/pokemon/weepinbell/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/weepinbell/shiny.pal"
-INCBIN "gfx/pokemon/victreebel/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/victreebel/shiny.pal"
-INCBIN "gfx/pokemon/tentacool/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/tentacool/shiny.pal"
-INCBIN "gfx/pokemon/tentacruel/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/tentacruel/shiny.pal"
-INCBIN "gfx/pokemon/geodude/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/geodude/shiny.pal"
-INCBIN "gfx/pokemon/graveler/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/graveler/shiny.pal"
-INCBIN "gfx/pokemon/golem/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/golem/shiny.pal"
-INCBIN "gfx/pokemon/ponyta/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/ponyta/shiny.pal"
-INCBIN "gfx/pokemon/rapidash/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/rapidash/shiny.pal"
-INCBIN "gfx/pokemon/slowpoke/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/slowpoke/shiny.pal"
-INCBIN "gfx/pokemon/slowbro/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/slowbro/shiny.pal"
-INCBIN "gfx/pokemon/magnemite/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/magnemite/shiny.pal"
-INCBIN "gfx/pokemon/magneton/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/magneton/shiny.pal"
-INCBIN "gfx/pokemon/farfetch_d/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/farfetch_d/shiny.pal"
-INCBIN "gfx/pokemon/doduo/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/doduo/shiny.pal"
-INCBIN "gfx/pokemon/dodrio/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/dodrio/shiny.pal"
-INCBIN "gfx/pokemon/seel/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/seel/shiny.pal"
-INCBIN "gfx/pokemon/dewgong/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/dewgong/shiny.pal"
-INCBIN "gfx/pokemon/grimer/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/grimer/shiny.pal"
-INCBIN "gfx/pokemon/muk/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/muk/shiny.pal"
-INCBIN "gfx/pokemon/shellder/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/shellder/shiny.pal"
-INCBIN "gfx/pokemon/cloyster/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/cloyster/shiny.pal"
-INCBIN "gfx/pokemon/gastly/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/gastly/shiny.pal"
-INCBIN "gfx/pokemon/haunter/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/haunter/shiny.pal"
-INCBIN "gfx/pokemon/gengar/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/gengar/shiny.pal"
-INCBIN "gfx/pokemon/onix/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/onix/shiny.pal"
-INCBIN "gfx/pokemon/drowzee/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/drowzee/shiny.pal"
-INCBIN "gfx/pokemon/hypno/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/hypno/shiny.pal"
-INCBIN "gfx/pokemon/krabby/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/krabby/shiny.pal"
-INCBIN "gfx/pokemon/kingler/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/kingler/shiny.pal"
-INCBIN "gfx/pokemon/voltorb/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/voltorb/shiny.pal"
-INCBIN "gfx/pokemon/electrode/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/electrode/shiny.pal"
-INCBIN "gfx/pokemon/exeggcute/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/exeggcute/shiny.pal"
-INCBIN "gfx/pokemon/exeggutor/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/exeggutor/shiny.pal"
-INCBIN "gfx/pokemon/cubone/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/cubone/shiny.pal"
-INCBIN "gfx/pokemon/marowak/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/marowak/shiny.pal"
-INCBIN "gfx/pokemon/hitmonlee/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/hitmonlee/shiny.pal"
-INCBIN "gfx/pokemon/hitmonchan/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/hitmonchan/shiny.pal"
-INCBIN "gfx/pokemon/lickitung/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/lickitung/shiny.pal"
-INCBIN "gfx/pokemon/koffing/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/koffing/shiny.pal"
-INCBIN "gfx/pokemon/weezing/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/weezing/shiny.pal"
-INCBIN "gfx/pokemon/rhyhorn/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/rhyhorn/shiny.pal"
-INCBIN "gfx/pokemon/rhydon/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/rhydon/shiny.pal"
-INCBIN "gfx/pokemon/chansey/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/chansey/shiny.pal"
-INCBIN "gfx/pokemon/tangela/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/tangela/shiny.pal"
-INCBIN "gfx/pokemon/kangaskhan/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/kangaskhan/shiny.pal"
-INCBIN "gfx/pokemon/horsea/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/horsea/shiny.pal"
-INCBIN "gfx/pokemon/seadra/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/seadra/shiny.pal"
-INCBIN "gfx/pokemon/goldeen/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/goldeen/shiny.pal"
-INCBIN "gfx/pokemon/seaking/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/seaking/shiny.pal"
-INCBIN "gfx/pokemon/staryu/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/staryu/shiny.pal"
-INCBIN "gfx/pokemon/starmie/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/starmie/shiny.pal"
-INCBIN "gfx/pokemon/mr__mime/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/mr__mime/shiny.pal"
-INCBIN "gfx/pokemon/scyther/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/scyther/shiny.pal"
-INCBIN "gfx/pokemon/jynx/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/jynx/shiny.pal"
-INCBIN "gfx/pokemon/electabuzz/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/electabuzz/shiny.pal"
-INCBIN "gfx/pokemon/magmar/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/magmar/shiny.pal"
-INCBIN "gfx/pokemon/pinsir/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/pinsir/shiny.pal"
-INCBIN "gfx/pokemon/tauros/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/tauros/shiny.pal"
-INCBIN "gfx/pokemon/magikarp/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/magikarp/shiny.pal"
-INCBIN "gfx/pokemon/gyarados/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/gyarados/shiny.pal"
-INCBIN "gfx/pokemon/lapras/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/lapras/shiny.pal"
-INCBIN "gfx/pokemon/ditto/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/ditto/shiny.pal"
-INCBIN "gfx/pokemon/eevee/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/eevee/shiny.pal"
-INCBIN "gfx/pokemon/vaporeon/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/vaporeon/shiny.pal"
-INCBIN "gfx/pokemon/jolteon/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/jolteon/shiny.pal"
-INCBIN "gfx/pokemon/flareon/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/flareon/shiny.pal"
-INCBIN "gfx/pokemon/porygon/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/porygon/shiny.pal"
-INCBIN "gfx/pokemon/omanyte/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/omanyte/shiny.pal"
-INCBIN "gfx/pokemon/omastar/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/omastar/shiny.pal"
-INCBIN "gfx/pokemon/kabuto/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/kabuto/shiny.pal"
-INCBIN "gfx/pokemon/kabutops/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/kabutops/shiny.pal"
-INCBIN "gfx/pokemon/aerodactyl/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/aerodactyl/shiny.pal"
-INCBIN "gfx/pokemon/snorlax/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/snorlax/shiny.pal"
-INCBIN "gfx/pokemon/articuno/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/articuno/shiny.pal"
-INCBIN "gfx/pokemon/zapdos/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/zapdos/shiny.pal"
-INCBIN "gfx/pokemon/moltres/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/moltres/shiny.pal"
-INCBIN "gfx/pokemon/dratini/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/dratini/shiny.pal"
-INCBIN "gfx/pokemon/dragonair/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/dragonair/shiny.pal"
-INCBIN "gfx/pokemon/dragonite/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/dragonite/shiny.pal"
-INCBIN "gfx/pokemon/mewtwo/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/mewtwo/shiny.pal"
-INCBIN "gfx/pokemon/mew/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/mew/shiny.pal"
-INCBIN "gfx/pokemon/chikorita/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/chikorita/shiny.pal"
-INCBIN "gfx/pokemon/bayleef/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/bayleef/shiny.pal"
-INCBIN "gfx/pokemon/meganium/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/meganium/shiny.pal"
-INCBIN "gfx/pokemon/cyndaquil/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/cyndaquil/shiny.pal"
-INCBIN "gfx/pokemon/quilava/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/quilava/shiny.pal"
-INCBIN "gfx/pokemon/typhlosion/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/typhlosion/shiny.pal"
-INCBIN "gfx/pokemon/totodile/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/totodile/shiny.pal"
-INCBIN "gfx/pokemon/croconaw/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/croconaw/shiny.pal"
-INCBIN "gfx/pokemon/feraligatr/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/feraligatr/shiny.pal"
-INCBIN "gfx/pokemon/sentret/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/sentret/shiny.pal"
-INCBIN "gfx/pokemon/furret/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/furret/shiny.pal"
-INCBIN "gfx/pokemon/hoothoot/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/hoothoot/shiny.pal"
-INCBIN "gfx/pokemon/noctowl/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/noctowl/shiny.pal"
-INCBIN "gfx/pokemon/ledyba/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/ledyba/shiny.pal"
-INCBIN "gfx/pokemon/ledian/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/ledian/shiny.pal"
-INCBIN "gfx/pokemon/spinarak/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/spinarak/shiny.pal"
-INCBIN "gfx/pokemon/ariados/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/ariados/shiny.pal"
-INCBIN "gfx/pokemon/crobat/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/crobat/shiny.pal"
-INCBIN "gfx/pokemon/chinchou/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/chinchou/shiny.pal"
-INCBIN "gfx/pokemon/lanturn/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/lanturn/shiny.pal"
-INCBIN "gfx/pokemon/pichu/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/pichu/shiny.pal"
-INCBIN "gfx/pokemon/cleffa/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/cleffa/shiny.pal"
-INCBIN "gfx/pokemon/igglybuff/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/igglybuff/shiny.pal"
-INCBIN "gfx/pokemon/togepi/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/togepi/shiny.pal"
-INCBIN "gfx/pokemon/togetic/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/togetic/shiny.pal"
-INCBIN "gfx/pokemon/natu/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/natu/shiny.pal"
-INCBIN "gfx/pokemon/xatu/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/xatu/shiny.pal"
-INCBIN "gfx/pokemon/mareep/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/mareep/shiny.pal"
-INCBIN "gfx/pokemon/flaaffy/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/flaaffy/shiny.pal"
-INCBIN "gfx/pokemon/ampharos/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/ampharos/shiny.pal"
-INCBIN "gfx/pokemon/bellossom/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/bellossom/shiny.pal"
-INCBIN "gfx/pokemon/marill/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/marill/shiny.pal"
-INCBIN "gfx/pokemon/azumarill/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/azumarill/shiny.pal"
-INCBIN "gfx/pokemon/sudowoodo/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/sudowoodo/shiny.pal"
-INCBIN "gfx/pokemon/politoed/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/politoed/shiny.pal"
-INCBIN "gfx/pokemon/hoppip/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/hoppip/shiny.pal"
-INCBIN "gfx/pokemon/skiploom/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/skiploom/shiny.pal"
-INCBIN "gfx/pokemon/jumpluff/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/jumpluff/shiny.pal"
-INCBIN "gfx/pokemon/aipom/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/aipom/shiny.pal"
-INCBIN "gfx/pokemon/sunkern/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/sunkern/shiny.pal"
-INCBIN "gfx/pokemon/sunflora/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/sunflora/shiny.pal"
-INCBIN "gfx/pokemon/yanma/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/yanma/shiny.pal"
-INCBIN "gfx/pokemon/wooper/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/wooper/shiny.pal"
-INCBIN "gfx/pokemon/quagsire/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/quagsire/shiny.pal"
-INCBIN "gfx/pokemon/espeon/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/espeon/shiny.pal"
-INCBIN "gfx/pokemon/umbreon/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/umbreon/shiny.pal"
-INCBIN "gfx/pokemon/murkrow/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/murkrow/shiny.pal"
-INCBIN "gfx/pokemon/slowking/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/slowking/shiny.pal"
-INCBIN "gfx/pokemon/misdreavus/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/misdreavus/shiny.pal"
-INCBIN "gfx/pokemon/unown/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/unown/shiny.pal"
-INCBIN "gfx/pokemon/wobbuffet/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/wobbuffet/shiny.pal"
-INCBIN "gfx/pokemon/girafarig/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/girafarig/shiny.pal"
-INCBIN "gfx/pokemon/pineco/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/pineco/shiny.pal"
-INCBIN "gfx/pokemon/forretress/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/forretress/shiny.pal"
-INCBIN "gfx/pokemon/dunsparce/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/dunsparce/shiny.pal"
-INCBIN "gfx/pokemon/gligar/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/gligar/shiny.pal"
-INCBIN "gfx/pokemon/steelix/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/steelix/shiny.pal"
-INCBIN "gfx/pokemon/snubbull/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/snubbull/shiny.pal"
-INCBIN "gfx/pokemon/granbull/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/granbull/shiny.pal"
-INCBIN "gfx/pokemon/qwilfish/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/qwilfish/shiny.pal"
-INCBIN "gfx/pokemon/scizor/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/scizor/shiny.pal"
-INCBIN "gfx/pokemon/shuckle/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/shuckle/shiny.pal"
-INCBIN "gfx/pokemon/heracross/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/heracross/shiny.pal"
-INCBIN "gfx/pokemon/sneasel/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/sneasel/shiny.pal"
-INCBIN "gfx/pokemon/teddiursa/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/teddiursa/shiny.pal"
-INCBIN "gfx/pokemon/ursaring/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/ursaring/shiny.pal"
-INCBIN "gfx/pokemon/slugma/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/slugma/shiny.pal"
-INCBIN "gfx/pokemon/magcargo/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/magcargo/shiny.pal"
-INCBIN "gfx/pokemon/swinub/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/swinub/shiny.pal"
-INCBIN "gfx/pokemon/piloswine/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/piloswine/shiny.pal"
-INCBIN "gfx/pokemon/corsola/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/corsola/shiny.pal"
-INCBIN "gfx/pokemon/remoraid/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/remoraid/shiny.pal"
-INCBIN "gfx/pokemon/octillery/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/octillery/shiny.pal"
-INCBIN "gfx/pokemon/delibird/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/delibird/shiny.pal"
-INCBIN "gfx/pokemon/mantine/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/mantine/shiny.pal"
-INCBIN "gfx/pokemon/skarmory/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/skarmory/shiny.pal"
-INCBIN "gfx/pokemon/houndour/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/houndour/shiny.pal"
-INCBIN "gfx/pokemon/houndoom/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/houndoom/shiny.pal"
-INCBIN "gfx/pokemon/kingdra/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/kingdra/shiny.pal"
-INCBIN "gfx/pokemon/phanpy/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/phanpy/shiny.pal"
-INCBIN "gfx/pokemon/donphan/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/donphan/shiny.pal"
-INCBIN "gfx/pokemon/porygon2/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/porygon2/shiny.pal"
-INCBIN "gfx/pokemon/stantler/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/stantler/shiny.pal"
-INCBIN "gfx/pokemon/smeargle/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/smeargle/shiny.pal"
-INCBIN "gfx/pokemon/tyrogue/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/tyrogue/shiny.pal"
-INCBIN "gfx/pokemon/hitmontop/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/hitmontop/shiny.pal"
-INCBIN "gfx/pokemon/smoochum/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/smoochum/shiny.pal"
-INCBIN "gfx/pokemon/elekid/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/elekid/shiny.pal"
-INCBIN "gfx/pokemon/magby/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/magby/shiny.pal"
-INCBIN "gfx/pokemon/miltank/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/miltank/shiny.pal"
-INCBIN "gfx/pokemon/blissey/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/blissey/shiny.pal"
-INCBIN "gfx/pokemon/raikou/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/raikou/shiny.pal"
-INCBIN "gfx/pokemon/entei/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/entei/shiny.pal"
-INCBIN "gfx/pokemon/suicune/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/suicune/shiny.pal"
-INCBIN "gfx/pokemon/larvitar/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/larvitar/shiny.pal"
-INCBIN "gfx/pokemon/pupitar/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/pupitar/shiny.pal"
-INCBIN "gfx/pokemon/tyranitar/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/tyranitar/shiny.pal"
-INCBIN "gfx/pokemon/lugia/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/lugia/shiny.pal"
-INCBIN "gfx/pokemon/ho_oh/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/ho_oh/shiny.pal"
-INCBIN "gfx/pokemon/celebi/normal.gbcpal", middle_colors
-INCLUDE "gfx/pokemon/celebi/shiny.pal"
+; BULBASAUR
+	RGB 12, 31, 11
+	RGB 31, 10, 06
+; BULBASAUR shiny
+	RGB 20, 28, 11
+	RGB 31, 10, 06
 
-	assert_table_length NUM_POKEMON + 1
+; IVYSAUR
+	RGB 12, 31, 11
+	RGB 31, 10, 16
+; IVYSAUR shiny
+	RGB 20, 28, 11
+	RGB 31, 24, 09
+
+; VENUSAUR
+	RGB 08, 25, 11
+	RGB 29, 07, 14
+; VENUSAUR shiny
+	RGB 18, 25, 11
+	RGB 31, 22, 03
+
+; CHARMANDER
+	RGB 31, 13, 04
+	RGB 22, 05, 05
+; CHARMANDER shiny
+	RGB 31, 24, 06
+	RGB 31, 16, 02
+
+; CHARMELEON
+	RGB 30, 08, 06
+	RGB 18, 03, 07
+; CHARMELEON shiny
+	RGB 31, 21, 15
+	RGB 23, 09, 13
+
+; CHARIZARD
+	RGB 31, 11, 00
+	RGB 06, 09, 15
+; CHARIZARD shiny
+	RGB 20, 15, 21
+	RGB 08, 21, 14
+
+; SQUIRTLE
+	RGB 22, 18, 08
+	RGB 10, 15, 31
+; SQUIRTLE shiny
+	RGB 13, 23, 08
+	RGB 17, 25, 30
+
+; WARTORTLE
+	RGB 22, 18, 08
+	RGB 10, 14, 31
+; WARTORTLE shiny
+	RGB 13, 23, 08
+	RGB 18, 19, 31
+
+; BLASTOISE
+	RGB 24, 20, 03
+	RGB 08, 11, 31
+; BLASTOISE shiny
+	RGB 14, 21, 07
+	RGB 16, 16, 20
+
+; CATERPIE
+	RGB 12, 22, 06
+	RGB 31, 09, 15
+; CATERPIE shiny
+	RGB 27, 24, 06
+	RGB 31, 12, 17
+
+; METAPOD
+	RGB 15, 31, 00
+	RGB 09, 14, 01
+; METAPOD shiny
+	RGB 28, 19, 13
+	RGB 24, 14, 00
+
+; BUTTERFREE
+	RGB 18, 25, 31
+	RGB 26, 05, 13
+; BUTTERFREE shiny
+	RGB 31, 15, 23
+	RGB 15, 31, 00
+
+; WEEDLE
+	RGB 26, 17, 05
+	RGB 25, 05, 03
+; WEEDLE shiny
+	RGB 23, 27, 05
+	RGB 26, 07, 29
+
+; KAKUNA
+	RGB 26, 25, 03
+	RGB 20, 14, 08
+; KAKUNA shiny
+	RGB 20, 27, 04
+	RGB 13, 17, 07
+
+; BEEDRILL
+	RGB 31, 19, 04
+	RGB 30, 04, 01
+; BEEDRILL shiny
+	RGB 17, 20, 13
+	RGB 08, 07, 27
+
+; PIDGEY
+	RGB 30, 27, 13
+	RGB 19, 08, 02
+; PIDGEY shiny
+	RGB 30, 28, 12
+	RGB 20, 19, 08
+
+; PIDGEOTTO
+	RGB 31, 10, 12
+	RGB 19, 08, 02
+; PIDGEOTTO shiny
+	RGB 21, 19, 05
+	RGB 19, 14, 05
+
+; PIDGEOT
+	RGB 31, 10, 12
+	RGB 19, 08, 02
+; PIDGEOT shiny
+	RGB 31, 20, 14
+	RGB 15, 17, 02
+
+; RATTATA
+	RGB 22, 08, 30
+	RGB 16, 03, 17
+; RATTATA shiny
+	RGB 22, 23, 19
+	RGB 20, 17, 13
+
+; RATICATE
+	RGB 29, 23, 10
+	RGB 17, 10, 00
+; RATICATE shiny
+	RGB 23, 25, 15
+	RGB 26, 16, 03
+
+; SPEAROW
+	RGB 19, 10, 01
+	RGB 30, 10, 12
+; SPEAROW shiny
+	RGB 30, 26, 00
+	RGB 24, 13, 01
+
+; FEAROW
+	RGB 22, 11, 04
+	RGB 31, 06, 16
+; FEAROW shiny
+	RGB 16, 16, 10
+	RGB 24, 17, 07
+
+; EKANS
+	RGB 20, 08, 21
+	RGB 21, 00, 07
+; EKANS shiny
+	RGB 20, 23, 13
+	RGB 09, 11, 05
+
+; ARBOK
+	RGB 18, 08, 19
+	RGB 22, 04, 09
+; ARBOK shiny
+	RGB 18, 19, 11
+	RGB 20, 10, 30
+
+; PIKACHU
+	RGB 29, 26, 05
+	RGB 26, 06, 00
+; PIKACHU shiny
+	RGB 31, 17, 00
+	RGB 20, 02, 11
+
+; RAICHU
+	RGB 31, 26, 07
+	RGB 31, 12, 00
+; RAICHU shiny
+	RGB 21, 19, 20
+	RGB 24, 19, 02
+
+; SANDSHREW
+	RGB 22, 18, 06
+	RGB 12, 07, 01
+; SANDSHREW shiny
+	RGB 16, 16, 10
+	RGB 11, 08, 15
+
+; SANDSLASH
+	RGB 23, 18, 00
+	RGB 13, 07, 00
+; SANDSLASH shiny
+	RGB 16, 18, 04
+	RGB 21, 06, 01
+
+; NIDORAN_F
+	RGB 18, 21, 30
+	RGB 12, 06, 14
+; NIDORAN_F shiny
+	RGB 27, 17, 28
+	RGB 05, 17, 01
+
+; NIDORINA
+	RGB 13, 20, 31
+	RGB 07, 12, 14
+; NIDORINA shiny
+	RGB 31, 17, 30
+	RGB 06, 15, 10
+
+; NIDOQUEEN
+	RGB 27, 19, 07
+	RGB 09, 16, 27
+; NIDOQUEEN shiny
+	RGB 31, 16, 31
+	RGB 11, 13, 08
+
+; NIDORAN_M
+	RGB 27, 08, 21
+	RGB 17, 02, 16
+; NIDORAN_M shiny
+	RGB 18, 21, 31
+	RGB 17, 08, 15
+
+; NIDORINO
+	RGB 22, 08, 22
+	RGB 10, 05, 16
+; NIDORINO shiny
+	RGB 20, 23, 31
+	RGB 23, 04, 25
+
+; NIDOKING
+	RGB 18, 06, 20
+	RGB 11, 04, 11
+; NIDOKING shiny
+	RGB 13, 17, 31
+	RGB 15, 09, 23
+
+; CLEFAIRY
+	RGB 31, 14, 18
+	RGB 13, 07, 00
+; CLEFAIRY shiny
+	RGB 31, 13, 25
+	RGB 08, 18, 00
+
+; CLEFABLE
+	RGB 31, 14, 18
+	RGB 13, 07, 00
+; CLEFABLE shiny
+	RGB 31, 13, 25
+	RGB 08, 18, 00
+
+; VULPIX
+	RGB 31, 12, 07
+	RGB 21, 05, 08
+; VULPIX shiny
+	RGB 31, 24, 01
+	RGB 22, 16, 01
+
+; NINETALES
+	RGB 31, 31, 06
+	RGB 18, 15, 00
+; NINETALES shiny
+	RGB 27, 22, 25
+	RGB 17, 17, 23
+
+; JIGGLYPUFF
+	RGB 31, 14, 21
+	RGB 06, 16, 31
+; JIGGLYPUFF shiny
+	RGB 31, 17, 31
+	RGB 09, 24, 03
+
+; WIGGLYTUFF
+	RGB 31, 14, 21
+	RGB 06, 16, 31
+; WIGGLYTUFF shiny
+	RGB 31, 17, 31
+	RGB 09, 24, 03
+
+; ZUBAT
+	RGB 12, 15, 19
+	RGB 05, 08, 17
+; ZUBAT shiny
+	RGB 27, 15, 30
+	RGB 10, 17, 06
+
+; GOLBAT
+	RGB 12, 15, 19
+	RGB 05, 08, 17
+; GOLBAT shiny
+	RGB 29, 12, 19
+	RGB 07, 15, 00
+
+; ODDISH
+	RGB 11, 23, 03
+	RGB 06, 09, 09
+; ODDISH shiny
+	RGB 31, 26, 04
+	RGB 08, 18, 11
+
+; GLOOM
+	RGB 31, 12, 00
+	RGB 08, 09, 13
+; GLOOM shiny
+	RGB 31, 21, 05
+	RGB 13, 17, 12
+
+; VILEPLUME
+	RGB 31, 06, 03
+	RGB 08, 09, 13
+; VILEPLUME shiny
+	RGB 31, 21, 03
+	RGB 08, 15, 13
+
+; PARAS
+	RGB 31, 12, 03
+	RGB 23, 03, 00
+; PARAS shiny
+	RGB 27, 19, 03
+	RGB 14, 13, 01
+
+; PARASECT
+	RGB 31, 09, 04
+	RGB 14, 05, 01
+; PARASECT shiny
+	RGB 31, 21, 09
+	RGB 18, 16, 05
+
+; VENONAT
+	RGB 28, 05, 02
+	RGB 11, 00, 14
+; VENONAT shiny
+	RGB 14, 17, 31
+	RGB 11, 05, 22
+
+; VENOMOTH
+	RGB 27, 10, 24
+	RGB 12, 05, 14
+; VENOMOTH shiny
+	RGB 16, 15, 31
+	RGB 17, 06, 21
+
+; DIGLETT
+	RGB 19, 11, 04
+	RGB 24, 06, 04
+; DIGLETT shiny
+	RGB 19, 11, 04
+	RGB 12, 06, 27
+
+; DUGTRIO
+	RGB 19, 11, 04
+	RGB 24, 06, 04
+; DUGTRIO shiny
+	RGB 19, 11, 04
+	RGB 12, 06, 27
+
+; MEOWTH
+	RGB 31, 27, 13
+	RGB 20, 08, 03
+; MEOWTH shiny
+	RGB 31, 22, 12
+	RGB 26, 02, 18
+
+; PERSIAN
+	RGB 31, 28, 10
+	RGB 12, 09, 04
+; PERSIAN shiny
+	RGB 31, 28, 10
+	RGB 28, 09, 27
+
+; PSYDUCK
+	RGB 31, 31, 00
+	RGB 19, 15, 07
+; PSYDUCK shiny
+	RGB 21, 19, 31
+	RGB 10, 11, 20
+
+; GOLDUCK
+	RGB 22, 21, 26
+	RGB 08, 11, 24
+; GOLDUCK shiny
+	RGB 28, 10, 13
+	RGB 07, 17, 30
+
+; MANKEY
+	RGB 29, 20, 11
+	RGB 19, 09, 07
+; MANKEY shiny
+	RGB 19, 22, 11
+	RGB 20, 16, 07
+
+; PRIMEAPE
+	RGB 31, 18, 12
+	RGB 16, 08, 05
+; PRIMEAPE shiny
+	RGB 23, 17, 06
+	RGB 16, 16, 06
+
+; GROWLITHE
+	RGB 27, 19, 07
+	RGB 24, 08, 00
+; GROWLITHE shiny
+	RGB 23, 20, 07
+	RGB 21, 13, 00
+
+; ARCANINE
+	RGB 31, 23, 07
+	RGB 24, 06, 03
+; ARCANINE shiny
+	RGB 24, 17, 15
+	RGB 19, 17, 01
+
+; POLIWAG
+	RGB 26, 08, 05
+	RGB 07, 08, 10
+; POLIWAG shiny
+	RGB 26, 08, 17
+	RGB 08, 08, 29
+
+; POLIWHIRL
+	RGB 09, 14, 16
+	RGB 06, 07, 10
+; POLIWHIRL shiny
+	RGB 09, 16, 26
+	RGB 08, 10, 31
+
+; POLIWRATH
+	RGB 16, 16, 26
+	RGB 06, 06, 15
+; POLIWRATH shiny
+	RGB 11, 24, 26
+	RGB 08, 17, 15
+
+; ABRA
+	RGB 28, 19, 03
+	RGB 12, 08, 10
+; ABRA shiny
+	RGB 28, 24, 10
+	RGB 20, 09, 19
+
+; KADABRA
+	RGB 28, 19, 03
+	RGB 12, 08, 10
+; KADABRA shiny
+	RGB 28, 24, 10
+	RGB 20, 09, 19
+
+; ALAKAZAM
+	RGB 28, 19, 03
+	RGB 12, 08, 10
+; ALAKAZAM shiny
+	RGB 19, 19, 03
+	RGB 21, 02, 21
+
+; MACHOP
+	RGB 20, 17, 11
+	RGB 09, 11, 04
+; MACHOP shiny
+	RGB 15, 14, 11
+	RGB 06, 08, 09
+
+; MACHOKE
+	RGB 16, 17, 11
+	RGB 22, 04, 04
+; MACHOKE shiny
+	RGB 14, 16, 11
+	RGB 07, 06, 25
+
+; MACHAMP
+	RGB 21, 18, 11
+	RGB 09, 11, 04
+; MACHAMP shiny
+	RGB 14, 17, 11
+	RGB 09, 12, 04
+
+; BELLSPROUT
+	RGB 20, 31, 07
+	RGB 27, 10, 09
+; BELLSPROUT shiny
+	RGB 20, 20, 07
+	RGB 20, 10, 21
+
+; WEEPINBELL
+	RGB 13, 31, 07
+	RGB 29, 09, 09
+; WEEPINBELL shiny
+	RGB 22, 28, 07
+	RGB 19, 09, 19
+
+; VICTREEBEL
+	RGB 15, 26, 03
+	RGB 31, 10, 13
+; VICTREEBEL shiny
+	RGB 20, 23, 03
+	RGB 14, 12, 31
+
+; TENTACOOL
+	RGB 11, 20, 31
+	RGB 30, 06, 10
+; TENTACOOL shiny
+	RGB 19, 19, 31
+	RGB 08, 19, 13
+
+; TENTACRUEL
+	RGB 11, 20, 31
+	RGB 26, 02, 02
+; TENTACRUEL shiny
+	RGB 17, 20, 31
+	RGB 05, 20, 00
+
+; GEODUDE
+	RGB 18, 17, 15
+	RGB 08, 11, 07
+; GEODUDE shiny
+	RGB 24, 17, 15
+	RGB 15, 13, 07
+
+; GRAVELER
+	RGB 17, 17, 18
+	RGB 08, 11, 07
+; GRAVELER shiny
+	RGB 23, 14, 12
+	RGB 16, 11, 07
+
+; GOLEM
+	RGB 18, 16, 08
+	RGB 08, 11, 07
+; GOLEM shiny
+	RGB 25, 15, 12
+	RGB 19, 07, 03
+
+; PONYTA
+	RGB 26, 27, 04
+	RGB 31, 05, 03
+; PONYTA shiny
+	RGB 23, 19, 16
+	RGB 19, 13, 12
+
+; RAPIDASH
+	RGB 26, 27, 04
+	RGB 31, 05, 03
+; RAPIDASH shiny
+	RGB 22, 19, 20
+	RGB 17, 10, 27
+
+; SLOWPOKE
+	RGB 31, 10, 17
+	RGB 21, 05, 08
+; SLOWPOKE shiny
+	RGB 22, 11, 26
+	RGB 17, 00, 31
+
+; SLOWBRO
+	RGB 31, 10, 17
+	RGB 12, 17, 11
+; SLOWBRO shiny
+	RGB 21, 10, 31
+	RGB 18, 18, 00
+
+; MAGNEMITE
+	RGB 15, 17, 24
+	RGB 31, 06, 02
+; MAGNEMITE shiny
+	RGB 19, 20, 19
+	RGB 20, 07, 07
+
+; MAGNETON
+	RGB 15, 17, 24
+	RGB 31, 06, 02
+; MAGNETON shiny
+	RGB 15, 16, 18
+	RGB 18, 11, 11
+
+; FARFETCH_D
+	RGB 23, 12, 08
+	RGB 06, 26, 01
+; FARFETCH_D shiny
+	RGB 20, 16, 14
+	RGB 12, 20, 01
+
+; DODUO
+	RGB 21, 13, 09
+	RGB 12, 08, 06
+; DODUO shiny
+	RGB 28, 23, 00
+	RGB 18, 16, 00
+
+; DODRIO
+	RGB 26, 16, 08
+	RGB 18, 08, 06
+; DODRIO shiny
+	RGB 31, 24, 01
+	RGB 18, 16, 00
+
+; SEEL
+	RGB 19, 21, 31
+	RGB 29, 09, 13
+; SEEL shiny
+	RGB 20, 19, 22
+	RGB 29, 07, 05
+
+; DEWGONG
+	RGB 19, 21, 31
+	RGB 08, 11, 18
+; DEWGONG shiny
+	RGB 20, 19, 20
+	RGB 18, 11, 14
+
+; GRIMER
+	RGB 29, 02, 20
+	RGB 12, 01, 12
+; GRIMER shiny
+	RGB 16, 19, 01
+	RGB 11, 10, 10
+
+; MUK
+	RGB 29, 02, 20
+	RGB 12, 01, 12
+; MUK shiny
+	RGB 15, 20, 09
+	RGB 10, 13, 03
+
+; SHELLDER
+	RGB 16, 08, 13
+	RGB 21, 07, 01
+; SHELLDER shiny
+	RGB 24, 17, 07
+	RGB 21, 09, 04
+
+; CLOYSTER
+	RGB 21, 10, 22
+	RGB 12, 04, 13
+; CLOYSTER shiny
+	RGB 20, 12, 28
+	RGB 11, 04, 31
+
+; GASTLY
+	RGB 30, 08, 30
+	RGB 17, 00, 23
+; GASTLY shiny
+	RGB 16, 17, 30
+	RGB 05, 07, 11
+
+; HAUNTER
+	RGB 25, 07, 06
+	RGB 14, 00, 19
+; HAUNTER shiny
+	RGB 10, 09, 27
+	RGB 08, 00, 19
+
+; GENGAR
+	RGB 31, 05, 02
+	RGB 09, 00, 16
+; GENGAR shiny
+	RGB 31, 00, 29
+	RGB 15, 12, 23
+
+; ONIX
+	RGB 17, 15, 20
+	RGB 09, 06, 11
+; ONIX shiny
+	RGB 15, 21, 04
+	RGB 14, 11, 07
+
+; DROWZEE
+	RGB 31, 23, 04
+	RGB 18, 10, 12
+; DROWZEE shiny
+	RGB 24, 13, 27
+	RGB 18, 00, 10
+
+; HYPNO
+	RGB 31, 25, 00
+	RGB 21, 12, 00
+; HYPNO shiny
+	RGB 30, 09, 25
+	RGB 18, 10, 13
+
+; KRABBY
+	RGB 29, 17, 09
+	RGB 29, 05, 04
+; KRABBY shiny
+	RGB 21, 20, 22
+	RGB 18, 15, 04
+
+; KINGLER
+	RGB 29, 17, 09
+	RGB 29, 05, 04
+; KINGLER shiny
+	RGB 21, 22, 09
+	RGB 12, 13, 11
+
+; VOLTORB
+	RGB 20, 20, 17
+	RGB 24, 05, 05
+; VOLTORB shiny
+	RGB 20, 20, 17
+	RGB 09, 02, 28
+
+; ELECTRODE
+	RGB 20, 20, 17
+	RGB 24, 05, 05
+; ELECTRODE shiny
+	RGB 20, 20, 17
+	RGB 09, 02, 28
+
+; EXEGGCUTE
+	RGB 31, 15, 17
+	RGB 19, 05, 09
+; EXEGGCUTE shiny
+	RGB 23, 25, 06
+	RGB 19, 12, 09
+
+; EXEGGUTOR
+	RGB 20, 13, 06
+	RGB 05, 16, 07
+; EXEGGUTOR shiny
+	RGB 19, 17, 08
+	RGB 24, 14, 09
+
+; CUBONE
+	RGB 20, 19, 12
+	RGB 16, 10, 04
+; CUBONE shiny
+	RGB 22, 22, 23
+	RGB 11, 15, 09
+
+; MAROWAK
+	RGB 20, 19, 12
+	RGB 16, 10, 04
+; MAROWAK shiny
+	RGB 18, 21, 15
+	RGB 14, 15, 04
+
+; HITMONLEE
+	RGB 22, 14, 05
+	RGB 15, 16, 15
+; HITMONLEE shiny
+	RGB 17, 21, 05
+	RGB 13, 08, 13
+
+; HITMONCHAN
+	RGB 21, 15, 12
+	RGB 27, 03, 18
+; HITMONCHAN shiny
+	RGB 16, 17, 12
+	RGB 08, 03, 31
+
+; LICKITUNG
+	RGB 31, 10, 18
+	RGB 26, 06, 05
+; LICKITUNG shiny
+	RGB 24, 22, 09
+	RGB 28, 09, 14
+
+; KOFFING
+	RGB 25, 10, 25
+	RGB 18, 06, 18
+; KOFFING shiny
+	RGB 16, 20, 25
+	RGB 09, 12, 23
+
+; WEEZING
+	RGB 25, 10, 25
+	RGB 11, 05, 14
+; WEEZING shiny
+	RGB 16, 20, 25
+	RGB 09, 12, 23
+
+; RHYHORN
+	RGB 15, 11, 17
+	RGB 07, 09, 04
+; RHYHORN shiny
+	RGB 22, 15, 17
+	RGB 15, 11, 13
+
+; RHYDON
+	RGB 15, 11, 17
+	RGB 07, 09, 04
+; RHYDON shiny
+	RGB 22, 21, 21
+	RGB 12, 12, 17
+
+; CHANSEY
+	RGB 28, 16, 21
+	RGB 31, 09, 19
+; CHANSEY shiny
+	RGB 27, 25, 19
+	RGB 13, 19, 01
+
+; TANGELA
+	RGB 09, 13, 23
+	RGB 17, 06, 06
+; TANGELA shiny
+	RGB 18, 30, 00
+	RGB 17, 06, 06
+
+; KANGASKHAN
+	RGB 19, 14, 04
+	RGB 08, 08, 02
+; KANGASKHAN shiny
+	RGB 16, 16, 19
+	RGB 03, 11, 03
+
+; HORSEA
+	RGB 28, 27, 12
+	RGB 11, 17, 31
+; HORSEA shiny
+	RGB 31, 12, 24
+	RGB 12, 15, 31
+
+; SEADRA
+	RGB 28, 22, 16
+	RGB 09, 16, 31
+; SEADRA shiny
+	RGB 31, 11, 27
+	RGB 10, 04, 29
+
+; GOLDEEN
+	RGB 31, 12, 19
+	RGB 31, 10, 02
+; GOLDEEN shiny
+	RGB 29, 19, 00
+	RGB 30, 14, 00
+
+; SEAKING
+	RGB 19, 22, 30
+	RGB 31, 10, 02
+; SEAKING shiny
+	RGB 21, 27, 18
+	RGB 26, 22, 02
+
+; STARYU
+	RGB 23, 17, 11
+	RGB 31, 05, 03
+; STARYU shiny
+	RGB 18, 16, 19
+	RGB 08, 13, 30
+
+; STARMIE
+	RGB 26, 22, 00
+	RGB 19, 07, 18
+; STARMIE shiny
+	RGB 29, 09, 11
+	RGB 11, 11, 31
+
+; MR__MIME
+	RGB 31, 11, 31
+	RGB 28, 07, 13
+; MR__MIME shiny
+	RGB 31, 11, 31
+	RGB 17, 19, 00
+
+; SCYTHER
+	RGB 15, 26, 00
+	RGB 23, 25, 00
+; SCYTHER shiny
+	RGB 17, 24, 00
+	RGB 28, 09, 00
+
+; JYNX
+	RGB 14, 02, 15
+	RGB 29, 06, 19
+; JYNX shiny
+	RGB 14, 02, 15
+	RGB 31, 09, 27
+
+; ELECTABUZZ
+	RGB 31, 31, 05
+	RGB 24, 16, 05
+; ELECTABUZZ shiny
+	RGB 31, 25, 00
+	RGB 18, 20, 00
+
+; MAGMAR
+	RGB 31, 20, 00
+	RGB 23, 07, 06
+; MAGMAR shiny
+	RGB 31, 14, 30
+	RGB 24, 04, 14
+
+; PINSIR
+	RGB 20, 20, 14
+	RGB 17, 10, 07
+; PINSIR shiny
+	RGB 23, 23, 09
+	RGB 11, 11, 15
+
+; TAUROS
+	RGB 25, 15, 05
+	RGB 10, 07, 04
+; TAUROS shiny
+	RGB 30, 27, 14
+	RGB 09, 14, 10
+
+; MAGIKARP
+	RGB 29, 10, 06
+	RGB 18, 03, 09
+; MAGIKARP shiny
+	RGB 25, 24, 00
+	RGB 16, 16, 00
+
+; GYARADOS
+	RGB 27, 25, 07
+	RGB 09, 14, 26
+; GYARADOS shiny
+	RGB 25, 20, 08
+	RGB 27, 10, 05
+
+; LAPRAS
+	RGB 28, 21, 13
+	RGB 08, 16, 28
+; LAPRAS shiny
+	RGB 31, 13, 31
+	RGB 16, 11, 31
+
+; DITTO
+	RGB 23, 12, 28
+	RGB 13, 07, 16
+; DITTO shiny
+	RGB 17, 22, 28
+	RGB 09, 12, 27
+
+; EEVEE
+	RGB 24, 16, 06
+	RGB 17, 08, 02
+; EEVEE shiny
+	RGB 19, 19, 21
+	RGB 12, 14, 13
+
+; VAPOREON
+	RGB 16, 22, 31
+	RGB 09, 11, 31
+; VAPOREON shiny
+	RGB 27, 21, 31
+	RGB 15, 10, 24
+
+; JOLTEON
+	RGB 31, 31, 03
+	RGB 28, 11, 01
+; JOLTEON shiny
+	RGB 25, 22, 00
+	RGB 15, 15, 06
+
+; FLAREON
+	RGB 31, 10, 01
+	RGB 21, 05, 02
+; FLAREON shiny
+	RGB 30, 17, 01
+	RGB 24, 09, 00
+
+; PORYGON
+	RGB 24, 09, 04
+	RGB 08, 15, 20
+; PORYGON shiny
+	RGB 14, 03, 27
+	RGB 12, 11, 25
+
+; OMANYTE
+	RGB 20, 17, 11
+	RGB 07, 14, 21
+; OMANYTE shiny
+	RGB 23, 19, 10
+	RGB 12, 11, 11
+
+; OMASTAR
+	RGB 20, 17, 11
+	RGB 07, 14, 21
+; OMASTAR shiny
+	RGB 25, 28, 02
+	RGB 12, 11, 15
+
+; KABUTO
+	RGB 20, 14, 00
+	RGB 12, 09, 06
+; KABUTO shiny
+	RGB 23, 24, 20
+	RGB 14, 18, 10
+
+; KABUTOPS
+	RGB 20, 14, 00
+	RGB 12, 09, 06
+; KABUTOPS shiny
+	RGB 19, 20, 11
+	RGB 10, 15, 10
+
+; AERODACTYL
+	RGB 19, 19, 15
+	RGB 12, 11, 11
+; AERODACTYL shiny
+	RGB 22, 09, 23
+	RGB 12, 09, 21
+
+; SNORLAX
+	RGB 27, 18, 14
+	RGB 13, 09, 09
+; SNORLAX shiny
+	RGB 27, 22, 11
+	RGB 09, 07, 31
+
+; ARTICUNO
+	RGB 11, 21, 31
+	RGB 08, 11, 16
+; ARTICUNO shiny
+	RGB 19, 26, 31
+	RGB 13, 13, 22
+
+; ZAPDOS
+	RGB 31, 28, 00
+	RGB 23, 16, 00
+; ZAPDOS shiny
+	RGB 31, 19, 00
+	RGB 31, 04, 00
+
+; MOLTRES
+	RGB 31, 22, 00
+	RGB 31, 12, 03
+; MOLTRES shiny
+	RGB 31, 11, 14
+	RGB 21, 01, 00
+
+; DRATINI
+	RGB 28, 26, 07
+	RGB 08, 14, 24
+; DRATINI shiny
+	RGB 21, 19, 24
+	RGB 14, 11, 24
+
+; DRAGONAIR
+	RGB 17, 19, 31
+	RGB 05, 14, 23
+; DRAGONAIR shiny
+	RGB 21, 19, 31
+	RGB 20, 15, 31
+
+; DRAGONITE
+	RGB 24, 17, 04
+	RGB 11, 10, 17
+; DRAGONITE shiny
+	RGB 17, 19, 14
+	RGB 19, 00, 14
+
+; MEWTWO
+	RGB 22, 20, 25
+	RGB 16, 05, 20
+; MEWTWO shiny
+	RGB 19, 21, 22
+	RGB 15, 15, 00
+
+; MEW
+	RGB 31, 15, 31
+	RGB 07, 11, 26
+; MEW shiny
+	RGB 18, 24, 31
+	RGB 07, 11, 26
+
+; CHIKORITA
+	RGB 21, 23, 12
+	RGB 03, 20, 00
+; CHIKORITA shiny
+	RGB 29, 23, 12
+	RGB 26, 14, 00
+
+; BAYLEEF
+	RGB 27, 25, 06
+	RGB 11, 16, 02
+; BAYLEEF shiny
+	RGB 27, 20, 13
+	RGB 25, 15, 00
+
+; MEGANIUM
+	RGB 13, 24, 03
+	RGB 21, 01, 10
+; MEGANIUM shiny
+	RGB 24, 24, 00
+	RGB 28, 12, 05
+
+; CYNDAQUIL
+	RGB 31, 27, 00
+	RGB 31, 07, 05
+; CYNDAQUIL shiny
+	RGB 29, 23, 09
+	RGB 22, 00, 19
+
+; QUILAVA
+	RGB 31, 28, 04
+	RGB 31, 09, 03
+; QUILAVA shiny
+	RGB 29, 23, 09
+	RGB 22, 00, 19
+
+; TYPHLOSION
+	RGB 31, 27, 09
+	RGB 27, 06, 03
+; TYPHLOSION shiny
+	RGB 29, 23, 09
+	RGB 22, 00, 19
+
+; TOTODILE
+	RGB 12, 17, 26
+	RGB 28, 09, 04
+; TOTODILE shiny
+	RGB 18, 26, 15
+	RGB 14, 09, 28
+
+; CROCONAW
+	RGB 12, 17, 29
+	RGB 26, 08, 07
+; CROCONAW shiny
+	RGB 15, 21, 14
+	RGB 13, 09, 23
+
+; FERALIGATR
+	RGB 11, 14, 29
+	RGB 21, 06, 01
+; FERALIGATR shiny
+	RGB 08, 17, 13
+	RGB 12, 07, 31
+
+; SENTRET
+	RGB 22, 15, 10
+	RGB 15, 07, 04
+; SENTRET shiny
+	RGB 24, 19, 02
+	RGB 21, 05, 20
+
+; FURRET
+	RGB 23, 21, 04
+	RGB 14, 09, 02
+; FURRET shiny
+	RGB 30, 13, 31
+	RGB 15, 10, 02
+
+; HOOTHOOT
+	RGB 23, 13, 06
+	RGB 04, 06, 16
+; HOOTHOOT shiny
+	RGB 23, 22, 06
+	RGB 22, 02, 24
+
+; NOCTOWL
+	RGB 18, 12, 04
+	RGB 11, 05, 06
+; NOCTOWL shiny
+	RGB 18, 23, 04
+	RGB 23, 10, 06
+
+; LEDYBA
+	RGB 26, 19, 08
+	RGB 27, 06, 05
+; LEDYBA shiny
+	RGB 31, 26, 00
+	RGB 31, 17, 00
+
+; LEDIAN
+	RGB 31, 22, 04
+	RGB 27, 06, 05
+; LEDIAN shiny
+	RGB 31, 26, 00
+	RGB 31, 17, 00
+
+; SPINARAK
+	RGB 28, 21, 12
+	RGB 09, 20, 05
+; SPINARAK shiny
+	RGB 31, 12, 31
+	RGB 20, 09, 31
+
+; ARIADOS
+	RGB 27, 10, 08
+	RGB 14, 06, 20
+; ARIADOS shiny
+	RGB 21, 03, 26
+	RGB 05, 09, 29
+
+; CROBAT
+	RGB 18, 08, 21
+	RGB 04, 09, 15
+; CROBAT shiny
+	RGB 29, 12, 19
+	RGB 07, 15, 00
+
+; CHINCHOU
+	RGB 27, 22, 07
+	RGB 13, 10, 28
+; CHINCHOU shiny
+	RGB 22, 28, 12
+	RGB 12, 14, 20
+
+; LANTURN
+	RGB 29, 24, 14
+	RGB 13, 10, 28
+; LANTURN shiny
+	RGB 20, 23, 10
+	RGB 16, 10, 31
+
+; PICHU
+	RGB 29, 26, 05
+	RGB 26, 06, 00
+; PICHU shiny
+	RGB 31, 17, 00
+	RGB 20, 02, 11
+
+; CLEFFA
+	RGB 31, 13, 25
+	RGB 13, 07, 00
+; CLEFFA shiny
+	RGB 31, 13, 25
+	RGB 08, 18, 00
+
+; IGGLYBUFF
+	RGB 31, 16, 24
+	RGB 22, 05, 05
+; IGGLYBUFF shiny
+	RGB 31, 17, 31
+	RGB 09, 24, 03
+
+; TOGEPI
+	RGB 30, 26, 11
+	RGB 31, 06, 17
+; TOGEPI shiny
+	RGB 30, 26, 11
+	RGB 08, 15, 31
+
+; TOGETIC
+	RGB 23, 20, 30
+	RGB 28, 07, 06
+; TOGETIC shiny
+	RGB 31, 24, 08
+	RGB 02, 16, 31
+
+; NATU
+	RGB 10, 23, 13
+	RGB 20, 05, 06
+; NATU shiny
+	RGB 20, 30, 19
+	RGB 21, 21, 10
+
+; XATU
+	RGB 10, 23, 13
+	RGB 20, 05, 06
+; XATU shiny
+	RGB 19, 27, 00
+	RGB 23, 12, 02
+
+; MAREEP
+	RGB 24, 20, 07
+	RGB 10, 05, 19
+; MAREEP shiny
+	RGB 31, 16, 31
+	RGB 10, 05, 19
+
+; FLAAFFY
+	RGB 31, 13, 19
+	RGB 10, 03, 14
+; FLAAFFY shiny
+	RGB 31, 16, 29
+	RGB 16, 08, 31
+
+; AMPHAROS
+	RGB 31, 31, 02
+	RGB 21, 10, 01
+; AMPHAROS shiny
+	RGB 24, 20, 21
+	RGB 14, 05, 31
+
+; BELLOSSOM
+	RGB 27, 08, 06
+	RGB 06, 17, 08
+; BELLOSSOM shiny
+	RGB 28, 11, 06
+	RGB 11, 14, 25
+
+; MARILL
+	RGB 09, 13, 29
+	RGB 25, 08, 05
+; MARILL shiny
+	RGB 08, 23, 11
+	RGB 31, 03, 30
+
+; AZUMARILL
+	RGB 10, 15, 24
+	RGB 22, 07, 04
+; AZUMARILL shiny
+	RGB 26, 20, 05
+	RGB 18, 09, 07
+
+; SUDOWOODO
+	RGB 18, 11, 08
+	RGB 06, 14, 07
+; SUDOWOODO shiny
+	RGB 16, 20, 08
+	RGB 29, 03, 12
+
+; POLITOED
+	RGB 25, 31, 04
+	RGB 07, 20, 06
+; POLITOED shiny
+	RGB 25, 19, 31
+	RGB 11, 16, 15
+
+; HOPPIP
+	RGB 11, 23, 06
+	RGB 21, 06, 07
+; HOPPIP shiny
+	RGB 14, 29, 06
+	RGB 09, 12, 03
+
+; SKIPLOOM
+	RGB 31, 22, 05
+	RGB 08, 18, 07
+; SKIPLOOM shiny
+	RGB 30, 24, 03
+	RGB 18, 00, 20
+
+; JUMPLUFF
+	RGB 28, 23, 13
+	RGB 09, 08, 24
+; JUMPLUFF shiny
+	RGB 25, 16, 29
+	RGB 31, 08, 31
+
+; AIPOM
+	RGB 29, 23, 12
+	RGB 12, 04, 14
+; AIPOM shiny
+	RGB 25, 16, 18
+	RGB 22, 03, 25
+
+; SUNKERN
+	RGB 29, 28, 01
+	RGB 13, 18, 08
+; SUNKERN shiny
+	RGB 31, 31, 01
+	RGB 14, 22, 00
+
+; SUNFLORA
+	RGB 26, 22, 03
+	RGB 10, 21, 00
+; SUNFLORA shiny
+	RGB 31, 31, 04
+	RGB 18, 18, 00
+
+; YANMA
+	RGB 09, 26, 10
+	RGB 20, 07, 07
+; YANMA shiny
+	RGB 09, 26, 10
+	RGB 13, 14, 30
+
+; WOOPER
+	RGB 16, 20, 25
+	RGB 17, 08, 14
+; WOOPER shiny
+	RGB 31, 17, 31
+	RGB 31, 21, 00
+
+; QUAGSIRE
+	RGB 14, 21, 28
+	RGB 14, 03, 20
+; QUAGSIRE shiny
+	RGB 23, 21, 26
+	RGB 28, 04, 30
+
+; ESPEON
+	RGB 25, 15, 26
+	RGB 15, 05, 18
+; ESPEON shiny
+	RGB 14, 31, 10
+	RGB 10, 16, 08
+
+; UMBREON
+	RGB 23, 17, 00
+	RGB 06, 07, 05
+; UMBREON shiny
+	RGB 10, 11, 31
+	RGB 06, 07, 05
+
+; MURKROW
+	RGB 26, 26, 03
+	RGB 07, 07, 17
+; MURKROW shiny
+	RGB 29, 31, 03
+	RGB 20, 02, 22
+
+; SLOWKING
+	RGB 31, 14, 18
+	RGB 23, 05, 02
+; SLOWKING shiny
+	RGB 31, 10, 31
+	RGB 09, 05, 31
+
+; MISDREAVUS
+	RGB 30, 06, 19
+	RGB 09, 09, 17
+; MISDREAVUS shiny
+	RGB 31, 25, 03
+	RGB 15, 14, 03
+
+; UNOWN
+	RGB 15, 15, 16
+	RGB 07, 07, 08
+; UNOWN shiny
+	RGB 14, 19, 31
+	RGB 02, 11, 31
+
+; WOBBUFFET
+	RGB 12, 21, 31
+	RGB 07, 14, 16
+; WOBBUFFET shiny
+	RGB 23, 07, 25
+	RGB 07, 09, 16
+
+; GIRAFARIG
+	RGB 31, 22, 04
+	RGB 28, 10, 16
+; GIRAFARIG shiny
+	RGB 31, 19, 00
+	RGB 05, 04, 31
+
+; PINECO
+	RGB 20, 22, 22
+	RGB 10, 17, 20
+; PINECO shiny
+	RGB 31, 31, 05
+	RGB 28, 10, 05
+
+; FORRETRESS
+	RGB 24, 11, 26
+	RGB 19, 02, 09
+; FORRETRESS shiny
+	RGB 18, 16, 02
+	RGB 10, 10, 01
+
+; DUNSPARCE
+	RGB 31, 24, 06
+	RGB 08, 15, 23
+; DUNSPARCE shiny
+	RGB 31, 24, 06
+	RGB 31, 05, 21
+
+; GLIGAR
+	RGB 25, 06, 18
+	RGB 08, 07, 20
+; GLIGAR shiny
+	RGB 19, 15, 19
+	RGB 06, 06, 31
+
+; STEELIX
+	RGB 17, 15, 26
+	RGB 12, 08, 12
+; STEELIX shiny
+	RGB 19, 15, 03
+	RGB 15, 08, 08
+
+; SNUBBULL
+	RGB 28, 14, 13
+	RGB 07, 10, 13
+; SNUBBULL shiny
+	RGB 18, 21, 24
+	RGB 26, 00, 26
+
+; GRANBULL
+	RGB 23, 12, 22
+	RGB 15, 04, 17
+; GRANBULL shiny
+	RGB 19, 20, 16
+	RGB 14, 12, 12
+
+; QWILFISH
+	RGB 27, 29, 11
+	RGB 04, 06, 16
+; QWILFISH shiny
+	RGB 24, 21, 22
+	RGB 18, 00, 11
+
+; SCIZOR
+	RGB 26, 08, 08
+	RGB 07, 08, 13
+; SCIZOR shiny
+	RGB 22, 22, 08
+	RGB 06, 14, 07
+
+; SHUCKLE
+	RGB 31, 22, 05
+	RGB 21, 04, 03
+; SHUCKLE shiny
+	RGB 31, 22, 05
+	RGB 15, 07, 31
+
+; HERACROSS
+	RGB 10, 09, 19
+	RGB 04, 03, 16
+; HERACROSS shiny
+	RGB 15, 09, 24
+	RGB 13, 03, 16
+
+; SNEASEL
+	RGB 31, 06, 18
+	RGB 07, 07, 11
+; SNEASEL shiny
+	RGB 28, 28, 09
+	RGB 31, 09, 31
+
+; TEDDIURSA
+	RGB 22, 14, 06
+	RGB 14, 07, 04
+; TEDDIURSA shiny
+	RGB 20, 29, 10
+	RGB 13, 20, 01
+
+; URSARING
+	RGB 31, 31, 06
+	RGB 20, 11, 00
+; URSARING shiny
+	RGB 26, 29, 25
+	RGB 18, 22, 00
+
+; SLUGMA
+	RGB 30, 28, 15
+	RGB 24, 06, 04
+; SLUGMA shiny
+	RGB 21, 21, 21
+	RGB 11, 11, 11
+
+; MAGCARGO
+	RGB 26, 07, 09
+	RGB 10, 08, 15
+; MAGCARGO shiny
+	RGB 12, 11, 28
+	RGB 15, 06, 06
+
+; SWINUB
+	RGB 23, 16, 03
+	RGB 19, 06, 04
+; SWINUB shiny
+	RGB 15, 18, 30
+	RGB 31, 06, 04
+
+; PILOSWINE
+	RGB 23, 17, 10
+	RGB 14, 10, 10
+; PILOSWINE shiny
+	RGB 22, 19, 00
+	RGB 19, 11, 00
+
+; CORSOLA
+	RGB 31, 11, 31
+	RGB 28, 07, 13
+; CORSOLA shiny
+	RGB 13, 25, 28
+	RGB 07, 14, 10
+
+; REMORAID
+	RGB 18, 17, 30
+	RGB 07, 10, 15
+; REMORAID shiny
+	RGB 14, 11, 14
+	RGB 09, 09, 08
+
+; OCTILLERY
+	RGB 31, 22, 04
+	RGB 31, 06, 03
+; OCTILLERY shiny
+	RGB 22, 28, 14
+	RGB 20, 18, 03
+
+; DELIBIRD
+	RGB 21, 16, 31
+	RGB 30, 08, 02
+; DELIBIRD shiny
+	RGB 31, 26, 00
+	RGB 26, 01, 26
+
+; MANTINE
+	RGB 25, 16, 31
+	RGB 10, 03, 21
+; MANTINE shiny
+	RGB 24, 27, 31
+	RGB 06, 17, 31
+
+; SKARMORY
+	RGB 19, 13, 31
+	RGB 17, 07, 04
+; SKARMORY shiny
+	RGB 18, 22, 13
+	RGB 05, 15, 01
+
+; HOUNDOUR
+	RGB 31, 12, 00
+	RGB 06, 08, 10
+; HOUNDOUR shiny
+	RGB 21, 19, 18
+	RGB 08, 07, 24
+
+; HOUNDOOM
+	RGB 31, 12, 00
+	RGB 09, 04, 17
+; HOUNDOOM shiny
+	RGB 19, 18, 20
+	RGB 08, 07, 20
+
+; KINGDRA
+	RGB 31, 23, 07
+	RGB 12, 17, 30
+; KINGDRA shiny
+	RGB 20, 17, 15
+	RGB 17, 11, 19
+
+; PHANPY
+	RGB 17, 20, 26
+	RGB 23, 09, 06
+; PHANPY shiny
+	RGB 22, 24, 25
+	RGB 24, 01, 06
+
+; DONPHAN
+	RGB 18, 20, 19
+	RGB 05, 11, 08
+; DONPHAN shiny
+	RGB 20, 21, 20
+	RGB 20, 10, 07
+
+; PORYGON2
+	RGB 10, 12, 24
+	RGB 25, 09, 10
+; PORYGON2 shiny
+	RGB 20, 19, 24
+	RGB 08, 11, 23
+
+; STANTLER
+	RGB 23, 15, 07
+	RGB 04, 05, 16
+; STANTLER shiny
+	RGB 19, 20, 07
+	RGB 20, 05, 01
+
+; SMEARGLE
+	RGB 23, 21, 08
+	RGB 14, 05, 06
+; SMEARGLE shiny
+	RGB 24, 25, 08
+	RGB 09, 23, 02
+
+; TYROGUE
+	RGB 23, 15, 18
+	RGB 17, 07, 03
+; TYROGUE shiny
+	RGB 19, 19, 18
+	RGB 09, 13, 29
+
+; HITMONTOP
+	RGB 24, 19, 04
+	RGB 10, 10, 21
+; HITMONTOP shiny
+	RGB 20, 17, 20
+	RGB 17, 07, 29
+
+; SMOOCHUM
+	RGB 29, 24, 04
+	RGB 20, 01, 19
+; SMOOCHUM shiny
+	RGB 31, 26, 07
+	RGB 31, 12, 25
+
+; ELEKID
+	RGB 31, 31, 05
+	RGB 15, 10, 03
+; ELEKID shiny
+	RGB 31, 24, 05
+	RGB 15, 15, 17
+
+; MAGBY
+	RGB 31, 18, 09
+	RGB 23, 02, 11
+; MAGBY shiny
+	RGB 30, 26, 09
+	RGB 31, 16, 00
+
+; MILTANK
+	RGB 27, 15, 18
+	RGB 06, 06, 13
+; MILTANK shiny
+	RGB 23, 22, 26
+	RGB 29, 10, 13
+
+; BLISSEY
+	RGB 28, 12, 14
+	RGB 18, 05, 08
+; BLISSEY shiny
+	RGB 31, 13, 29
+	RGB 14, 13, 24
+
+; RAIKOU
+	RGB 31, 31, 00
+	RGB 19, 06, 18
+; RAIKOU shiny
+	RGB 31, 15, 00
+	RGB 25, 21, 00
+
+; ENTEI
+	RGB 24, 14, 00
+	RGB 21, 00, 00
+; ENTEI shiny
+	RGB 20, 10, 01
+	RGB 10, 10, 08
+
+; SUICUNE
+	RGB 11, 23, 31
+	RGB 14, 02, 20
+; SUICUNE shiny
+	RGB 25, 24, 31
+	RGB 16, 19, 24
+
+; LARVITAR
+	RGB 12, 24, 01
+	RGB 25, 07, 16
+; LARVITAR shiny
+	RGB 18, 23, 10
+	RGB 20, 07, 23
+
+; PUPITAR
+	RGB 15, 20, 28
+	RGB 15, 06, 06
+; PUPITAR shiny
+	RGB 19, 11, 28
+	RGB 15, 06, 06
+
+; TYRANITAR
+	RGB 16, 28, 00
+	RGB 15, 10, 27
+; TYRANITAR shiny
+	RGB 21, 18, 15
+	RGB 19, 01, 31
+
+; LUGIA
+	RGB 25, 17, 28
+	RGB 10, 00, 31
+; LUGIA shiny
+	RGB 18, 28, 28
+	RGB 27, 00, 14
+
+; HO_OH
+	RGB 31, 07, 03
+	RGB 07, 15, 03
+; HO_OH shiny
+	RGB 25, 20, 00
+	RGB 31, 08, 04
+
+; CELEBI
+	RGB 10, 31, 00
+	RGB 03, 13, 28
+; CELEBI shiny
+	RGB 31, 15, 15
+	RGB 15, 04, 18
 
 ; 252
 	RGB 31, 00, 00
@@ -528,14 +1777,12 @@ INCLUDE "gfx/pokemon/celebi/shiny.pal"
 	RGB 31, 00, 31
 	RGB 23, 00, 23
 
-; 253 replaced the egg palettes
+; 253
 	RGB 00, 31, 00
 	RGB 00, 24, 00
 ; 253 shiny
 	RGB 00, 00, 31
 	RGB 00, 00, 24
-
-	assert_table_length EGG + 1
 
 ; 254
 	RGB 00, 31, 31
@@ -548,7 +1795,7 @@ INCLUDE "gfx/pokemon/celebi/shiny.pal"
 	RGB 27, 27, 27
 	RGB 21, 21, 21
 ; 255 shiny
-	RGB 8, 8, 8
-	RGB 6, 6, 6
+	RGB 08, 08, 08
+	RGB 06, 06, 06
 
 	assert_table_length $100

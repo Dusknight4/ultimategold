@@ -10,4 +10,5 @@ CriticalHitMoves:
 	db TWINEEDLE
 	db MEGAHORN
 	db SPIKE_CANNON
+	db FURY_CUTTER
 	db -1

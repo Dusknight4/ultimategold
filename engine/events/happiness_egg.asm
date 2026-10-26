@@ -192,8 +192,7 @@ DayCareStep::
 	ld hl, wStepsToEgg
 	dec [hl]
 	ret nz
-
-	call Random
+	ld a, 10
 	ld [hl], a
 	callfar CheckBreedmonCompatibility
 	ld a, [wBreedingCompatibility]

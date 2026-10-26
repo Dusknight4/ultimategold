@@ -372,6 +372,7 @@ LoadPinkPage:
 	jr z, .NotImmuneToPkrs
 	hlcoord 8, 8
 	ld [hl], "." ; Pokérus immunity dot
+
 .NotImmuneToPkrs:
 	ld a, [wMonType]
 	cp BOXMON
@@ -382,17 +383,19 @@ LoadPinkPage:
 	call PlaceStatusString
 	pop hl
 	jr .StatusOK
+
 .HasPokerus:
 	ld de, .PkrsStr
 	hlcoord 1, 13
 	call PlaceString
 	jr .done_status
+
 .StatusOK:
 	ld de, .OK_str
 	call z, PlaceString
 .done_status
 	hlcoord 1, 15
-	call PrintMonTypes
+	call PrintDonorMonTypes
 	ld bc, 9
 	decoord 0, 16
 	hlcoord 0, 17
@@ -405,6 +408,7 @@ LoadPinkPage:
 	ld de, SCREEN_WIDTH
 	ld b, 10
 	ld a, $31 ; vertical divider
+
 .vertical_divider
 	ld [hl], a
 	add hl, de
@@ -470,7 +474,6 @@ LoadPinkPage:
 	inc a
 	ld d, a
 	call CalcExpAtLevel
-	ld hl, wTempMonExp + 2
 	ld hl, wTempMonExp + 2
 	ldh a, [hQuotient + 3]
 	sub [hl]

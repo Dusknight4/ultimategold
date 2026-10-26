@@ -1,12 +1,12 @@
 	db SCIZOR ; 212
 
-	db  99, 149, 125,  65,  55,  90
+	db  99, 165, 125,  85,  55,  90
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, STEEL ; type
 	db 25 ; catch rate
 	db 200 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db METAL_COAT, METAL_COAT ; items
 	db GENDER_F50 ; gender ratio
 	db 100 ; unknown 1
 	db 25 ; step cycles to hatch

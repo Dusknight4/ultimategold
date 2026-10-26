@@ -1,6 +1,6 @@
 	db CHARIZARD ; 006
 
-	db  108, 104, 78, 100, 119, 85
+	db  108, 104, 78, 100, 129, 85
 	;   hp  atk  def  spd  sat  sdf
 
 	db FIRE, FLYING ; type
